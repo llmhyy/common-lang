@@ -12,8 +12,3 @@ site-content
 *.iml
 *.ipr
 
-# Eclipse files
-.settings
-.classpath
-.project
-.externalToolBuilders
