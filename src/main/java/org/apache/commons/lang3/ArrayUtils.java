@@ -5549,7 +5549,7 @@ public class ArrayUtils {
      * size 1 array of this type.
      * @return A new copy of the array of size 1 greater than the input.
      */
-    private static Object copyArrayGrow1(final Object array, final Class<?> newArrayComponentType) {
+    public static Object copyArrayGrow1(final Object array, final Class<?> newArrayComponentType) {
         if (array != null) {
             final int arrayLength = Array.getLength(array);
             final Object newArray = Array.newInstance(array.getClass().getComponentType(), arrayLength + 1);
@@ -5861,7 +5861,7 @@ public class ArrayUtils {
      * @param clss the type of the element being added
      * @return A new array containing the existing elements and the new element
      */
-    private static Object add(final Object array, final int index, final Object element, final Class<?> clss) {
+    public static Object add(final Object array, final int index, final Object element, final Class<?> clss) {
         if (array == null) {
             if (index != 0) {
                 throw new IndexOutOfBoundsException("Index: " + index + ", Length: 0");
@@ -6492,7 +6492,7 @@ public class ArrayUtils {
      * (index &lt; 0 || index &gt;= array.length), or if the array is {@code null}.
      * @since 2.1
      */
-    private static Object remove(final Object array, final int index) {
+    public static Object remove(final Object array, final int index) {
         final int length = getLength(array);
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);

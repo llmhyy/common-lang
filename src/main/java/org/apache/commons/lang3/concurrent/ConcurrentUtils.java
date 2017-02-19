@@ -37,7 +37,7 @@ public class ConcurrentUtils {
      * Private constructor so that no instances can be created. This class
      * contains only static utility methods.
      */
-    private ConcurrentUtils() {
+    public ConcurrentUtils() {
     }
 
     /**
@@ -154,7 +154,7 @@ public class ConcurrentUtils {
      *
      * @param ex the exception in question
      */
-    private static void throwCause(final ExecutionException ex) {
+    public static void throwCause(final ExecutionException ex) {
         if (ex.getCause() instanceof RuntimeException) {
             throw (RuntimeException) ex.getCause();
         }

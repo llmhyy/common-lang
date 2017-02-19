@@ -592,7 +592,7 @@ public class DurationFormatUtilsTest {
 //        }
 //    }        
     
-    private void bruteForce(final int year, final int month, final int day, final String format, final int calendarType) {
+    public void bruteForce(final int year, final int month, final int day, final String format, final int calendarType) {
         final String msg = year + "-" + month + "-" + day + " to ";
         final Calendar c = Calendar.getInstance();
         c.set(year, month, day, 0, 0, 0);
@@ -608,10 +608,10 @@ public class DurationFormatUtilsTest {
         }
     }
 
-    private void assertEqualDuration(final String expected, final int[] start, final int[] end, final String format) {
+    public void assertEqualDuration(final String expected, final int[] start, final int[] end, final String format) {
         assertEqualDuration(null, expected, start, end, format);
     }
-    private void assertEqualDuration(final String message, final String expected, final int[] start, final int[] end, final String format) {
+    public void assertEqualDuration(final String message, final String expected, final int[] start, final int[] end, final String format) {
         final Calendar cal1 = Calendar.getInstance();
         cal1.set(start[0], start[1], start[2], start[3], start[4], start[5]);
         cal1.set(Calendar.MILLISECOND, 0);

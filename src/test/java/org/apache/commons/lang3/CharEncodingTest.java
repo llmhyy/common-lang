@@ -32,7 +32,7 @@ import org.junit.Test;
  */
 public class CharEncodingTest  {
 
-    private void assertSupportedEncoding(final String name) {
+    public void assertSupportedEncoding(final String name) {
         assertTrue("Encoding should be supported: " + name, CharEncoding.isSupported(name));
     }
 

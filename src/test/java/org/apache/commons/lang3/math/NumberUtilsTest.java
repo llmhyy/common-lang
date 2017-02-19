@@ -393,7 +393,7 @@ public class NumberUtilsTest {
         this.testCreateFloatFailure("\u00A0\uFEFF\u000B\u000C\u001C\u001D\u001E\u001F");
     }
 
-    protected void testCreateFloatFailure(final String str) {
+    public void testCreateFloatFailure(final String str) {
         try {
             final Float value = NumberUtils.createFloat(str);
             fail("createFloat(\"" + str + "\") should have failed: " + value);
@@ -413,7 +413,7 @@ public class NumberUtilsTest {
         this.testCreateDoubleFailure("\u00A0\uFEFF\u000B\u000C\u001C\u001D\u001E\u001F");
     }
 
-    protected void testCreateDoubleFailure(final String str) {
+    public void testCreateDoubleFailure(final String str) {
         try {
             final Double value = NumberUtils.createDouble(str);
             fail("createDouble(\"" + str + "\") should have failed: " + value);
@@ -433,7 +433,7 @@ public class NumberUtilsTest {
         this.testCreateIntegerFailure("\u00A0\uFEFF\u000B\u000C\u001C\u001D\u001E\u001F");
     }
 
-    protected void testCreateIntegerFailure(final String str) {
+    public void testCreateIntegerFailure(final String str) {
         try {
             final Integer value = NumberUtils.createInteger(str);
             fail("createInteger(\"" + str + "\") should have failed: " + value);
@@ -453,7 +453,7 @@ public class NumberUtilsTest {
         this.testCreateLongFailure("\u00A0\uFEFF\u000B\u000C\u001C\u001D\u001E\u001F");
     }
 
-    protected void testCreateLongFailure(final String str) {
+    public void testCreateLongFailure(final String str) {
         try {
             final Long value = NumberUtils.createLong(str);
             fail("createLong(\"" + str + "\") should have failed: " + value);
@@ -486,7 +486,7 @@ public class NumberUtilsTest {
         testCreateBigIntegerFailure("-0x");
     }
 
-    protected void testCreateBigIntegerFailure(final String str) {
+    public void testCreateBigIntegerFailure(final String str) {
         try {
             final BigInteger value = NumberUtils.createBigInteger(str);
             fail("createBigInteger(\"" + str + "\") should have failed: " + value);
@@ -512,7 +512,7 @@ public class NumberUtilsTest {
         this.testCreateBigDecimalFailure("++0");
     }
 
-    protected void testCreateBigDecimalFailure(final String str) {
+    public void testCreateBigDecimalFailure(final String str) {
         try {
             final BigDecimal value = NumberUtils.createBigDecimal(str);
             fail("createBigDecimal(\"" + str + "\") should have failed: " + value);
@@ -1294,7 +1294,7 @@ public class NumberUtilsTest {
         compareIsNumberWithCreateNumber("0XABCD", true);
     }
 
-    private void compareIsNumberWithCreateNumber(final String val, final boolean expected) {
+    public void compareIsNumberWithCreateNumber(final String val, final boolean expected) {
         final boolean isValid = NumberUtils.isNumber(val);
         final boolean canCreate = checkCreateNumber(val);
         if (isValid == expected && canCreate == expected) {
@@ -1326,7 +1326,7 @@ public class NumberUtilsTest {
         assertTrue( NumberUtils.isParsable("-.236") );
     }
 
-    private boolean checkCreateNumber(final String val) {
+    public boolean checkCreateNumber(final String val) {
         try {
             final Object obj = NumberUtils.createNumber(val);
             if (obj == null) {

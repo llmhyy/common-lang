@@ -106,7 +106,7 @@ public class CallableBackgroundInitializer<T> extends BackgroundInitializer<T> {
      * @throws Exception if an error occurs
      */
     @Override
-    protected T initialize() throws Exception {
+    public T initialize() throws Exception {
         return callable.call();
     }
 
@@ -117,7 +117,7 @@ public class CallableBackgroundInitializer<T> extends BackgroundInitializer<T> {
      * @param call the object to check
      * @throws IllegalArgumentException if the {@code Callable} is <b>null</b>
      */
-    private void checkCallable(final Callable<T> call) {
+    public void checkCallable(final Callable<T> call) {
         if (call == null) {
             throw new IllegalArgumentException("Callable must not be null!");
         }

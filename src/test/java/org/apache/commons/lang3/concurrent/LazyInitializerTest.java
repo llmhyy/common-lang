@@ -37,7 +37,7 @@ public class LazyInitializerTest extends AbstractConcurrentInitializerTest {
      * @return the initializer to be tested
      */
     @Override
-    protected ConcurrentInitializer<Object> createInitializer() {
+    public ConcurrentInitializer<Object> createInitializer() {
         return initializer;
     }
 
@@ -49,7 +49,7 @@ public class LazyInitializerTest extends AbstractConcurrentInitializerTest {
     private static class LazyInitializerTestImpl extends
             LazyInitializer<Object> {
         @Override
-        protected Object initialize() {
+        public Object initialize() {
             return new Object();
         }
     }

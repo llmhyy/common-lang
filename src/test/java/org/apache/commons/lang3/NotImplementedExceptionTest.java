@@ -45,7 +45,7 @@ public class NotImplementedExceptionTest {
         assertCorrect("Issue in (String, Throwable, String)", nie, message, nested, code);
     }
 
-    private void assertCorrect(final String assertMessage, final NotImplementedException nie, final String message, final Throwable nested, final String code) {
+    public void assertCorrect(final String assertMessage, final NotImplementedException nie, final String message, final Throwable nested, final String code) {
         assertNotNull(assertMessage + ": target is null", nie);
         assertEquals(assertMessage + ": Message not equal", message, nie.getMessage());
         assertEquals(assertMessage + ": Nested throwable not equal", nested, nie.getCause());

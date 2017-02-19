@@ -160,7 +160,7 @@ public class MultiBackgroundInitializer
      * @return the number of tasks required for background processing
      */
     @Override
-    protected int getTaskCount() {
+    public int getTaskCount() {
         int result = 1;
 
         for (final BackgroundInitializer<?> bi : childInitializers.values()) {
@@ -181,7 +181,7 @@ public class MultiBackgroundInitializer
      * @throws Exception if an error occurs
      */
     @Override
-    protected MultiBackgroundInitializerResults initialize() throws Exception {
+    public MultiBackgroundInitializerResults initialize() throws Exception {
         Map<String, BackgroundInitializer<?>> inits;
         synchronized (this) {
             // create a snapshot to operate on
@@ -242,7 +242,7 @@ public class MultiBackgroundInitializer
          * @param results the result objects
          * @param excepts the exceptions
          */
-        private MultiBackgroundInitializerResults(
+        public MultiBackgroundInitializerResults(
                 final Map<String, BackgroundInitializer<?>> inits,
                 final Map<String, Object> results,
                 final Map<String, ConcurrentException> excepts) {
@@ -338,7 +338,7 @@ public class MultiBackgroundInitializer
          * @return the initializer with this name
          * @throws NoSuchElementException if the name is unknown
          */
-        private BackgroundInitializer<?> checkName(final String name) {
+        public BackgroundInitializer<?> checkName(final String name) {
             final BackgroundInitializer<?> init = initializers.get(name);
             if (init == null) {
                 throw new NoSuchElementException(

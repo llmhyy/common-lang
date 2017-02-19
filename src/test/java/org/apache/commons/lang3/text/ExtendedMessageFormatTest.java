@@ -336,7 +336,7 @@ public class ExtendedMessageFormatTest {
      * @param args MessageFormat arguments
      * @param locales to test
      */
-    private void checkBuiltInFormat(final String pattern, final Object[] args, final Locale[] locales) {
+    public void checkBuiltInFormat(final String pattern, final Object[] args, final Locale[] locales) {
         checkBuiltInFormat(pattern, null, args, locales);
     }
 
@@ -347,7 +347,7 @@ public class ExtendedMessageFormatTest {
      * @param args MessageFormat arguments
      * @param locales to test
      */
-    private void checkBuiltInFormat(final String pattern, final Map<String, ?> fmtRegistry, final Object[] args, final Locale[] locales) {
+    public void checkBuiltInFormat(final String pattern, final Map<String, ?> fmtRegistry, final Object[] args, final Locale[] locales) {
         checkBuiltInFormat(pattern, fmtRegistry, args, (Locale) null);
         for (final Locale locale : locales) {
             checkBuiltInFormat(pattern, fmtRegistry, args, locale);
@@ -362,7 +362,7 @@ public class ExtendedMessageFormatTest {
      * @param args Object[]
      * @param locale Locale
      */
-    private void checkBuiltInFormat(final String pattern, final Map<String, ?> registryUnused, final Object[] args, final Locale locale) {
+    public void checkBuiltInFormat(final String pattern, final Map<String, ?> registryUnused, final Object[] args, final Locale locale) {
         final StringBuilder buffer = new StringBuilder();
         buffer.append("Pattern=[");
         buffer.append(pattern);
@@ -382,7 +382,7 @@ public class ExtendedMessageFormatTest {
     }
 
     //can't trust what MessageFormat does with toPattern() pre 1.4:
-    private void assertPatternsEqual(final String message, final String expected, final String actual) {
+    public void assertPatternsEqual(final String message, final String expected, final String actual) {
         if (SystemUtils.isJavaVersionAtLeast(JAVA_1_4)) {
             assertEquals(message, expected, actual);
         }
@@ -394,7 +394,7 @@ public class ExtendedMessageFormatTest {
      * @param locale Locale
      * @return MessageFormat
      */
-    private MessageFormat createMessageFormat(final String pattern, final Locale locale) {
+    public MessageFormat createMessageFormat(final String pattern, final Locale locale) {
         final MessageFormat result = new MessageFormat(pattern);
         if (locale != null) {
             result.setLocale(locale);

@@ -734,7 +734,7 @@ public class StrSubstitutor {
      * @param length  the length within the builder to be processed, must be valid
      * @return true if altered
      */
-    protected boolean substitute(final StrBuilder buf, final int offset, final int length) {
+    public boolean substitute(final StrBuilder buf, final int offset, final int length) {
         return substitute(buf, offset, length, null) > 0;
     }
 
@@ -750,7 +750,7 @@ public class StrSubstitutor {
      * @return the length change that occurs, unless priorVariables is null when the int
      *  represents a boolean flag as to whether any change occurred.
      */
-    private int substitute(final StrBuilder buf, final int offset, final int length, List<String> priorVariables) {
+    public int substitute(final StrBuilder buf, final int offset, final int length, List<String> priorVariables) {
         final StrMatcher pfxMatcher = getVariablePrefixMatcher();
         final StrMatcher suffMatcher = getVariableSuffixMatcher();
         final char escape = getEscapeChar();
@@ -892,7 +892,7 @@ public class StrSubstitutor {
      * @param varName  the variable name to check
      * @param priorVariables  the list of prior variables
      */
-    private void checkCyclicSubstitution(final String varName, final List<String> priorVariables) {
+    public void checkCyclicSubstitution(final String varName, final List<String> priorVariables) {
         if (priorVariables.contains(varName) == false) {
             return;
         }
@@ -921,7 +921,7 @@ public class StrSubstitutor {
      * @param endPos  the end position of the variable including the suffix, valid
      * @return the variable's value or <b>null</b> if the variable is unknown
      */
-    protected String resolveVariable(final String variableName, final StrBuilder buf, final int startPos, final int endPos) {
+    public String resolveVariable(final String variableName, final StrBuilder buf, final int startPos, final int endPos) {
         final StrLookup<?> resolver = getVariableResolver();
         if (resolver == null) {
             return null;

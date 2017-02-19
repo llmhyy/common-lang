@@ -105,36 +105,36 @@ public class MethodUtilsTest {
         }
         
         @SuppressWarnings("unused")
-        private void privateStuff() {
+        public void privateStuff() {
         }
 
         @SuppressWarnings("unused")
-        private String privateStringStuff() {
+        public String privateStringStuff() {
         	return "privateStringStuff()";
         }
         
         @SuppressWarnings("unused")
-        private String privateStringStuff(final int i) {
+        public String privateStringStuff(final int i) {
         	return "privateStringStuff(int)";
         }
         
         @SuppressWarnings("unused")
-        private String privateStringStuff(final Integer i) {
+        public String privateStringStuff(final Integer i) {
         	return "privateStringStuff(Integer)";
         }
         
         @SuppressWarnings("unused")
-        private String privateStringStuff(final double d) {
+        public String privateStringStuff(final double d) {
         	return "privateStringStuff(double)";
         }
         
         @SuppressWarnings("unused")
-        private String privateStringStuff(final String s) {
+        public String privateStringStuff(final String s) {
         	return "privateStringStuff(String)";
         }
         
         @SuppressWarnings("unused")
-        private String privateStringStuff(final Object s) {
+        public String privateStringStuff(final Object s) {
         	return "privateStringStuff(Object)";
         }
 
@@ -704,7 +704,7 @@ public class MethodUtilsTest {
         MethodUtils.getMethodsListWithAnnotation(null, null);
     }
 
-    private void expectMatchingAccessibleMethodParameterTypes(final Class<?> cls,
+    public void expectMatchingAccessibleMethodParameterTypes(final Class<?> cls,
             final String methodName, final Class<?>[] requestTypes, final Class<?>[] actualTypes) {
         final Method m = MethodUtils.getMatchingAccessibleMethod(cls, methodName,
                 requestTypes);
@@ -715,11 +715,11 @@ public class MethodUtilsTest {
                 .getParameterTypes()));
     }
 
-    private String toString(final Class<?>[] c) {
+    public String toString(final Class<?>[] c) {
         return Arrays.asList(c).toString();
     }
 
-    private Class<?>[] singletonArray(final Class<?> c) {
+    public Class<?>[] singletonArray(final Class<?> c) {
         Class<?>[] result = classCache.get(c);
         if (result == null) {
             result = new Class[] { c };

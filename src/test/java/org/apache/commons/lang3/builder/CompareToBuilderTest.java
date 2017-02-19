@@ -164,7 +164,7 @@ public class CompareToBuilderTest {
         assertXYZCompareOrder(x, y, z, true, null);  
     }
     
-    private void assertXYZCompareOrder(final Object x, final Object y, final Object z, final boolean testTransients, final String[] excludeFields) {
+    public void assertXYZCompareOrder(final Object x, final Object y, final Object z, final boolean testTransients, final String[] excludeFields) {
         assertTrue(0 == CompareToBuilder.reflectionCompare(x, x, testTransients, null, excludeFields));
         assertTrue(0 == CompareToBuilder.reflectionCompare(y, y, testTransients, null, excludeFields));
         assertTrue(0 == CompareToBuilder.reflectionCompare(z, z, testTransients, null, excludeFields));
@@ -178,7 +178,7 @@ public class CompareToBuilderTest {
         assertTrue(0 < CompareToBuilder.reflectionCompare(z, y, testTransients, null, excludeFields));
     }
     
-    private void testReflectionHierarchyCompare(final boolean testTransients, final String[] excludeFields) {
+    public void testReflectionHierarchyCompare(final boolean testTransients, final String[] excludeFields) {
         final TestObject to1 = new TestObject(1);
         final TestObject to2 = new TestObject(2);
         final TestObject to3 = new TestObject(3);
@@ -210,7 +210,7 @@ public class CompareToBuilderTest {
      * @param testTransients Whether to include transients in the comparison
      * @param excludeFields fields to exclude
      */
-    private void assertReflectionCompareContract(final Object x, final Object y, final Object z, final boolean testTransients, final String[] excludeFields) {
+    public void assertReflectionCompareContract(final Object x, final Object y, final Object z, final boolean testTransients, final String[] excludeFields) {
 
         // signum
         assertTrue(reflectionCompareSignum(x, y, testTransients, excludeFields) == -reflectionCompareSignum(y, x, testTransients, excludeFields));
@@ -240,7 +240,7 @@ public class CompareToBuilderTest {
      * @param excludeFields fields to exclude
      * @return int The signum
      */
-    private int reflectionCompareSignum(final Object lhs, final Object rhs, final boolean testTransients, final String[] excludeFields) {
+    public int reflectionCompareSignum(final Object lhs, final Object rhs, final boolean testTransients, final String[] excludeFields) {
         return BigInteger.valueOf(CompareToBuilder.reflectionCompare(lhs, rhs, testTransients)).signum();
     }
     

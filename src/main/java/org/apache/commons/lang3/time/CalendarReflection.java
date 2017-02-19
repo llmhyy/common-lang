@@ -30,7 +30,7 @@ class CalendarReflection {
     private static final Method IS_WEEK_DATE_SUPPORTED = getCalendarMethod("isWeekDateSupported");
     private static final Method GET_WEEK_YEAR = getCalendarMethod("getWeekYear");
 
-    private static Method getCalendarMethod(String methodName, Class<?>... argTypes) {
+    public static Method getCalendarMethod(String methodName, Class<?>... argTypes) {
         try {
             Method m = Calendar.class.getMethod(methodName, argTypes);
             return m;

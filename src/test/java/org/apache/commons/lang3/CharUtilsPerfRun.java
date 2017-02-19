@@ -74,7 +74,7 @@ public class CharUtilsPerfRun {
         new CharUtilsPerfRun().run();
     }
 
-    private void printSysInfo() {
+    public void printSysInfo() {
         System.out.println(VERSION);
         System.out.println("Now: " + Calendar.getInstance().getTime());
         System.out.println(System.getProperty("java.vendor")
@@ -96,7 +96,7 @@ public class CharUtilsPerfRun {
             + System.getProperty("sun.cpu.isalist"));
     }
 
-    private void run() {
+    public void run() {
         this.printSysInfo();
         long start;
         start = System.currentTimeMillis();
@@ -121,7 +121,7 @@ public class CharUtilsPerfRun {
         this.printlnTotal("run_CharSet", start);
     }
 
-    private int run_CharSet(final int loopCount) {
+    public int run_CharSet(final int loopCount) {
         int t = 0;
         for (int i = 0; i < loopCount; i++) {
             for (final char ch : CHAR_SAMPLES) {
@@ -132,7 +132,7 @@ public class CharUtilsPerfRun {
         return t;
     }
 
-    private int run_CharUtils_isAsciiNumeric(final int loopCount) {
+    public int run_CharUtils_isAsciiNumeric(final int loopCount) {
         int t = 0;
         for (int i = 0; i < loopCount; i++) {
             for (final char ch : CHAR_SAMPLES) {
@@ -143,7 +143,7 @@ public class CharUtilsPerfRun {
         return t;
     }
 
-    private int run_inlined_CharUtils_isAsciiNumeric(final int loopCount) {
+    public int run_inlined_CharUtils_isAsciiNumeric(final int loopCount) {
         int t = 0;
         for (int i = 0; i < loopCount; i++) {
             for (final char ch : CHAR_SAMPLES) {
@@ -154,7 +154,7 @@ public class CharUtilsPerfRun {
         return t;
     }
 
-    private void printlnTotal(final String prefix, final long start) {
+    public void printlnTotal(final String prefix, final long start) {
         final long total = System.currentTimeMillis() - start;
         System.out.println(prefix + ": " + NumberFormat.getInstance().format(total) + " milliseconds.");
     }

@@ -150,7 +150,7 @@ public class TimedSemaphoreTest {
      * @param service the mock
      * @param future the future
      */
-    private void prepareStartTimer(final ScheduledExecutorService service,
+    public void prepareStartTimer(final ScheduledExecutorService service,
             final ScheduledFuture<?> future) {
         service.scheduleAtFixedRate((Runnable) EasyMock.anyObject(), EasyMock
                 .eq(PERIOD), EasyMock.eq(PERIOD), EasyMock.eq(UNIT));
@@ -436,7 +436,7 @@ public class TimedSemaphoreTest {
          * Counts the number of invocations.
          */
         @Override
-        protected synchronized void endOfPeriod() {
+        public synchronized void endOfPeriod() {
             super.endOfPeriod();
             periodEnds++;
         }
@@ -445,7 +445,7 @@ public class TimedSemaphoreTest {
          * Either returns the mock future or calls the super method.
          */
         @Override
-        protected ScheduledFuture<?> startTimer() {
+        public ScheduledFuture<?> startTimer() {
             return schedFuture != null ? schedFuture : super.startTimer();
         }
     }

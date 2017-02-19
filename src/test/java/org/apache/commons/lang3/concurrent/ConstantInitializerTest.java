@@ -45,7 +45,7 @@ public class ConstantInitializerTest {
      * @param obj the object to compare with the test instance
      * @param expected the expected result
      */
-    private void checkEquals(final Object obj, final boolean expected) {
+    public void checkEquals(final Object obj, final boolean expected) {
         assertTrue("Wrong result of equals", expected == init.equals(obj));
         if (obj != null) {
             assertTrue("Not symmetric", expected == obj.equals(init));

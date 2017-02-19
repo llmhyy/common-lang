@@ -105,7 +105,7 @@ public class JavaUnicodeEscaper extends UnicodeEscaper {
      * @return the hex string for the given codepoint
      */
     @Override
-    protected String toUtf16Escape(final int codepoint) {
+    public String toUtf16Escape(final int codepoint) {
         final char[] surrogatePair = Character.toChars(codepoint);
         return "\\u" + hex(surrogatePair[0]) + "\\u" + hex(surrogatePair[1]);
     }

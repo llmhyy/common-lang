@@ -33,7 +33,7 @@ public class BackgroundInitializerTest {
      *
      * @param init the initializer to test
      */
-    private void checkInitialize(final BackgroundInitializerTestImpl init) {
+    public void checkInitialize(final BackgroundInitializerTestImpl init) {
         try {
             final Integer result = init.get();
             assertEquals("Wrong result", 1, result.intValue());
@@ -306,7 +306,7 @@ public class BackgroundInitializerTest {
          * @throws Exception in case of an error
          */
         @Override
-        protected Integer initialize() throws Exception {
+        public Integer initialize() throws Exception {
             if (ex != null) {
                 throw ex;
             }

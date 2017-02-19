@@ -68,7 +68,7 @@ public class AnnotationUtils {
          * {@inheritDoc}
          */
         @Override
-        protected String getShortClassName(final java.lang.Class<?> cls) {
+        public String getShortClassName(final java.lang.Class<?> cls) {
             Class<? extends Annotation> annotationType = null;
             for (final Class<?> iface : ClassUtils.getAllInterfaces(cls)) {
                 if (Annotation.class.isAssignableFrom(iface)) {
@@ -87,7 +87,7 @@ public class AnnotationUtils {
          * {@inheritDoc}
          */
         @Override
-        protected void appendDetail(final StringBuffer buffer, final String fieldName, Object value) {
+        public void appendDetail(final StringBuffer buffer, final String fieldName, Object value) {
             if (value instanceof Annotation) {
                 value = AnnotationUtils.toString((Annotation) value);
             }
@@ -238,7 +238,7 @@ public class AnnotationUtils {
      * @param value the value of the member
      * @return a hash code for this member
      */
-    private static int hashMember(final String name, final Object value) {
+    public static int hashMember(final String name, final Object value) {
         final int part1 = name.hashCode() * 127;
         if (value.getClass().isArray()) {
             return part1 ^ arrayMemberHash(value.getClass().getComponentType(), value);
@@ -259,7 +259,7 @@ public class AnnotationUtils {
      * @param o2 the second object
      * @return a flag whether these objects are equal
      */
-    private static boolean memberEquals(final Class<?> type, final Object o1, final Object o2) {
+    public static boolean memberEquals(final Class<?> type, final Object o1, final Object o2) {
         if (o1 == o2) {
             return true;
         }
@@ -283,7 +283,7 @@ public class AnnotationUtils {
      * @param o2 the second object
      * @return a flag whether these objects are equal
      */
-    private static boolean arrayMemberEquals(final Class<?> componentType, final Object o1, final Object o2) {
+    public static boolean arrayMemberEquals(final Class<?> componentType, final Object o1, final Object o2) {
         if (componentType.isAnnotation()) {
             return annotationArrayMemberEquals((Annotation[]) o1, (Annotation[]) o2);
         }
@@ -321,7 +321,7 @@ public class AnnotationUtils {
      * @param a2 the second array
      * @return a flag whether these arrays are equal
      */
-    private static boolean annotationArrayMemberEquals(final Annotation[] a1, final Annotation[] a2) {
+    public static boolean annotationArrayMemberEquals(final Annotation[] a1, final Annotation[] a2) {
         if (a1.length != a2.length) {
             return false;
         }
@@ -340,7 +340,7 @@ public class AnnotationUtils {
      * @param o the array
      * @return a hash code for the specified array
      */
-    private static int arrayMemberHash(final Class<?> componentType, final Object o) {
+    public static int arrayMemberHash(final Class<?> componentType, final Object o) {
         if (componentType.equals(Byte.TYPE)) {
             return Arrays.hashCode((byte[]) o);
         }

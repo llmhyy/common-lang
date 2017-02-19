@@ -47,7 +47,7 @@ public class UnicodeEscaper extends CodePointTranslator {
      * @param above int value representing the highest codepoint boundary
      * @param between whether to escape between the boundaries or outside them
      */
-    protected UnicodeEscaper(final int below, final int above, final boolean between) {
+    public UnicodeEscaper(final int below, final int above, final boolean between) {
         this.below = below;
         this.above = above;
         this.between = between;
@@ -132,7 +132,7 @@ public class UnicodeEscaper extends CodePointTranslator {
      *
      * @since 3.2
      */
-    protected String toUtf16Escape(final int codepoint) {
+    public String toUtf16Escape(final int codepoint) {
         return "\\u" + hex(codepoint);
     }
 }

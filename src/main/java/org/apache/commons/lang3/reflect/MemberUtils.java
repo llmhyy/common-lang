@@ -132,7 +132,7 @@ abstract class MemberUtils {
      * {@code left}/{@code right}
      * @return int consistent with {@code compare} semantics
      */
-    private static int compareParameterTypes(final Executable left, final Executable right, final Class<?>[] actual) {
+    public static int compareParameterTypes(final Executable left, final Executable right, final Class<?>[] actual) {
         final float leftCost = getTotalTransformationCost(actual, left);
         final float rightCost = getTotalTransformationCost(actual, right);
         return leftCost < rightCost ? -1 : rightCost < leftCost ? 1 : 0;
@@ -146,7 +146,7 @@ abstract class MemberUtils {
      * @param isVarArgs True if the destination arguments are for a varags methods
      * @return The total transformation cost
      */
-    private static float getTotalTransformationCost(final Class<?>[] srcArgs, final Executable executable) {
+    public static float getTotalTransformationCost(final Class<?>[] srcArgs, final Executable executable) {
         final Class<?>[] destArgs = executable.getParameterTypes();
         final boolean isVarArgs = executable.isVarArgs();
 
@@ -193,7 +193,7 @@ abstract class MemberUtils {
      * @param destClass The destination class
      * @return The cost of transforming an object
      */
-    private static float getObjectTransformationCost(Class<?> srcClass, final Class<?> destClass) {
+    public static float getObjectTransformationCost(Class<?> srcClass, final Class<?> destClass) {
         if (destClass.isPrimitive()) {
             return getPrimitivePromotionCost(srcClass, destClass);
         }
@@ -228,7 +228,7 @@ abstract class MemberUtils {
      * @param destClass the (primitive) destination class
      * @return The cost of promoting the primitive
      */
-    private static float getPrimitivePromotionCost(final Class<?> srcClass, final Class<?> destClass) {
+    public static float getPrimitivePromotionCost(final Class<?> srcClass, final Class<?> destClass) {
         float cost = 0.0f;
         Class<?> cls = srcClass;
         if (!cls.isPrimitive()) {
@@ -255,7 +255,7 @@ abstract class MemberUtils {
       return MemberUtils.isMatchingExecutable(Executable.of(method), parameterTypes);
     }
 
-    private static boolean isMatchingExecutable(Executable method, Class<?>[] parameterTypes) {
+    public static boolean isMatchingExecutable(Executable method, Class<?>[] parameterTypes) {
         final Class<?>[] methodParameterTypes = method.getParameterTypes();
         if (method.isVarArgs()) {
             int i;
@@ -283,15 +283,15 @@ abstract class MemberUtils {
       private final Class<?>[] parameterTypes;
       private final boolean  isVarArgs;
 
-      private static Executable of(Method method) { return new Executable(method); }
-      private static Executable of(Constructor<?> constructor) { return new Executable(constructor); }
+      public static Executable of(Method method) { return new Executable(method); }
+      public static Executable of(Constructor<?> constructor) { return new Executable(constructor); }
 
-      private Executable(Method method) {
+      public Executable(Method method) {
         parameterTypes = method.getParameterTypes();
         isVarArgs = method.isVarArgs();
       }
 
-      private Executable(Constructor<?> constructor) {
+      public Executable(Constructor<?> constructor) {
         parameterTypes = constructor.getParameterTypes();
         isVarArgs = constructor.isVarArgs();
       }

@@ -78,7 +78,7 @@ public class RecursiveToStringStyle extends ToStringStyle {
     }
 
     @Override
-    protected void appendDetail(final StringBuffer buffer, final String fieldName, final Collection<?> coll) {
+    public void appendDetail(final StringBuffer buffer, final String fieldName, final Collection<?> coll) {
         appendClassName(buffer, coll);
         appendIdentityHashCode(buffer, coll);
         appendDetail(buffer, fieldName, coll.toArray());
@@ -93,7 +93,7 @@ public class RecursiveToStringStyle extends ToStringStyle {
      *            The class to test.
      * @return Whether or not to recursively format the given <code>Class</code>.
      */
-    protected boolean accept(final Class<?> clazz) {
+    public boolean accept(final Class<?> clazz) {
         return true;
     }
 }

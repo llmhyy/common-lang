@@ -173,7 +173,7 @@ public class CharSet implements Serializable {
      * @param set  Strings to merge into the initial set
      * @throws NullPointerException if set is {@code null}
      */
-    protected CharSet(final String... set) {
+    public CharSet(final String... set) {
         super();
         final int sz = set.length;
         for (int i = 0; i < sz; i++) {
@@ -187,7 +187,7 @@ public class CharSet implements Serializable {
      *
      * @param str  set definition string
      */
-    protected void add(final String str) {
+    public void add(final String str) {
         if (str == null) {
             return;
         }

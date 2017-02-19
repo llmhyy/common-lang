@@ -287,7 +287,7 @@ public class ConstructorUtils {
      * @return {@code true} if {@code type} and any enclosing classes are
      *         {@code public}.
      */
-    private static boolean isAccessible(final Class<?> type) {
+    public static boolean isAccessible(final Class<?> type) {
         Class<?> cls = type;
         while (cls != null) {
             if (!Modifier.isPublic(cls.getModifiers())) {

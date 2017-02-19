@@ -37,7 +37,7 @@ public class StrTokenizerTest {
 
     private static final String TSV_SIMPLE_FIXTURE = "A\tb\tc";
 
-    private void checkClone(final StrTokenizer tokenizer) {
+    public void checkClone(final StrTokenizer tokenizer) {
         assertFalse(StrTokenizer.getCSVInstance() == tokenizer);
         assertFalse(StrTokenizer.getTSVInstance() == tokenizer);
     }
@@ -507,7 +507,7 @@ public class StrTokenizerTest {
     }
 
     //-----------------------------------------------------------------------
-    private void testCSV(final String data) {
+    public void testCSV(final String data) {
         this.testXSVAbc(StrTokenizer.getCSVInstance(data));
         this.testXSVAbc(StrTokenizer.getCSVInstance(data.toCharArray()));
     }
@@ -843,7 +843,7 @@ public class StrTokenizerTest {
     public void testTokenizeSubclassInputChange() {
         final StrTokenizer tkn = new StrTokenizer("a b c d e") {
             @Override
-            protected List<String> tokenize(final char[] chars, final int offset, final int count) {
+            public List<String> tokenize(final char[] chars, final int offset, final int count) {
                 return super.tokenize("w x y z".toCharArray(), 2, 5);
             }
         };
@@ -856,7 +856,7 @@ public class StrTokenizerTest {
     public void testTokenizeSubclassOutputChange() {
         final StrTokenizer tkn = new StrTokenizer("a b c") {
             @Override
-            protected List<String> tokenize(final char[] chars, final int offset, final int count) {
+            public List<String> tokenize(final char[] chars, final int offset, final int count) {
                 final List<String> list = super.tokenize(chars, offset, count);
                 Collections.reverse(list);
                 return list;

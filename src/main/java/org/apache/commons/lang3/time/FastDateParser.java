@@ -112,7 +112,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @param timeZone non-null time zone to use
      * @param locale non-null locale
      */
-    protected FastDateParser(final String pattern, final TimeZone timeZone, final Locale locale) {
+    public FastDateParser(final String pattern, final TimeZone timeZone, final Locale locale) {
         this(pattern, timeZone, locale, null);
     }
 
@@ -127,7 +127,7 @@ public class FastDateParser implements DateParser, Serializable {
      *
      * @since 3.5
      */
-    protected FastDateParser(final String pattern, final TimeZone timeZone, final Locale locale, final Date centuryStart) {
+    public FastDateParser(final String pattern, final TimeZone timeZone, final Locale locale, final Date centuryStart) {
         this.pattern = pattern;
         this.timeZone = timeZone;
         this.locale = locale;
@@ -159,7 +159,7 @@ public class FastDateParser implements DateParser, Serializable {
      *
      * @param definingCalendar the {@link java.util.Calendar} instance used to initialize this FastDateParser
      */
-    private void init(final Calendar definingCalendar) {
+    public void init(final Calendar definingCalendar) {
         patterns = new ArrayList<StrategyAndWidth>();
 
         StrategyParser fm = new StrategyParser(pattern, definingCalendar);
@@ -222,7 +222,7 @@ public class FastDateParser implements DateParser, Serializable {
             return literal();
         }
 
-        private StrategyAndWidth letterPattern(char c) {
+        public StrategyAndWidth letterPattern(char c) {
             int begin = currentIdx;
             while (++currentIdx < pattern.length()) {
                 if (pattern.charAt(currentIdx) != c) {
@@ -234,7 +234,7 @@ public class FastDateParser implements DateParser, Serializable {
             return new StrategyAndWidth(getStrategy(c, width, definingCalendar), width);
         }
 
-        private StrategyAndWidth literal() {
+        public StrategyAndWidth literal() {
             boolean activeQuote = false;
 
             StringBuilder sb = new StringBuilder();
@@ -261,7 +261,7 @@ public class FastDateParser implements DateParser, Serializable {
         }
     }
 
-    private static boolean isFormatLetter(char c) {
+    public static boolean isFormatLetter(char c) {
         return c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z';
     }
 
@@ -341,7 +341,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @throws IOException if there is an IO issue.
      * @throws ClassNotFoundException if a class cannot be found.
      */
-    private void readObject(final ObjectInputStream in) throws IOException, ClassNotFoundException {
+    public void readObject(final ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 
         final Calendar definingCalendar = Calendar.getInstance(timeZone, locale);
@@ -433,7 +433,7 @@ public class FastDateParser implements DateParser, Serializable {
     // Support for strategies
     //-----------------------------------------------------------------------
 
-    private static StringBuilder simpleQuote(final StringBuilder sb, final String value) {
+    public static StringBuilder simpleQuote(final StringBuilder sb, final String value) {
         for (int i = 0; i < value.length(); ++i) {
             char c = value.charAt(i);
             switch (c) {
@@ -465,7 +465,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @param regex The regular expression to build
      * @return The map of string display names to field values
      */
-    private static Map<String, Integer> appendDisplayNames(Calendar cal, Locale locale, int field, StringBuilder regex) {
+    public static Map<String, Integer> appendDisplayNames(Calendar cal, Locale locale, int field, StringBuilder regex) {
         Map<String, Integer> values = new HashMap<String, Integer>();
 
         Map<String, Integer> displayNames = cal.getDisplayNames(field, Calendar.ALL_STYLES, locale);
@@ -487,7 +487,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @param twoDigitYear The year to adjust
      * @return A value between centuryStart(inclusive) to centuryStart+100(exclusive)
      */
-    private int adjustYear(final int twoDigitYear) {
+    public int adjustYear(final int twoDigitYear) {
         final int trial = century + twoDigitYear;
         return twoDigitYear >= startYear ? trial : trial + 100;
     }
@@ -556,7 +556,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @param definingCalendar The calendar to obtain the short and long values
      * @return The Strategy that will handle parsing for the field
      */
-    private Strategy getStrategy(char f, int width, final Calendar definingCalendar) {
+    public Strategy getStrategy(char f, int width, final Calendar definingCalendar) {
         switch(f) {
         default:
             throw new IllegalArgumentException("Format '"+f+"' not supported");
@@ -617,7 +617,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @param field The Calendar field
      * @return a cache of Locale to Strategy
      */
-    private static ConcurrentMap<Locale, Strategy> getCache(final int field) {
+    public static ConcurrentMap<Locale, Strategy> getCache(final int field) {
         synchronized (caches) {
             if (caches[field] == null) {
                 caches[field] = new ConcurrentHashMap<Locale, Strategy>(3);
@@ -632,7 +632,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @param definingCalendar The calendar to obtain the short and long values
      * @return a TextStrategy for the field and Locale
      */
-    private Strategy getLocaleSpecificStrategy(final int field, final Calendar definingCalendar) {
+    public Strategy getLocaleSpecificStrategy(final int field, final Calendar definingCalendar) {
         final ConcurrentMap<Locale, Strategy> cache = getCache(field);
         Strategy strategy = cache.get(locale);
         if (strategy == null) {

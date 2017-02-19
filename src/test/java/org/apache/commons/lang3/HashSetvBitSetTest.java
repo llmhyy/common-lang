@@ -48,7 +48,7 @@ public class HashSetvBitSetTest {
     /**
      * @return bitSet - HashSet
      */
-    private long printTimes(final int count) {
+    public long printTimes(final int count) {
         final long hashSet = timeHashSet(count);
         final long bitSet = timeBitSet(count);
         // If percent is less than 100, then bitset is faster
@@ -56,7 +56,7 @@ public class HashSetvBitSetTest {
         return bitSet - hashSet;
     }
 
-    private static long timeHashSet(final int count) {
+    public static long timeHashSet(final int count) {
         int [] result = new int[0];
         final long start = System.nanoTime();
         for (int i = 0; i < LOOPS; i++) {
@@ -67,7 +67,7 @@ public class HashSetvBitSetTest {
         return elapsed;
     }
 
-    private static long timeBitSet(final int count) {
+    public static long timeBitSet(final int count) {
         int [] result = new int[0];
         final long start = System.nanoTime();
         for (int i = 0; i < LOOPS; i++) {
@@ -79,7 +79,7 @@ public class HashSetvBitSetTest {
     }
 
     @SuppressWarnings("boxing")
-    private static int[] testHashSet(final int count) {
+    public static int[] testHashSet(final int count) {
         final HashSet<Integer> toRemove = new HashSet<Integer>();
             int found = 0;
             for (int i = 0; i < count; i++) {
@@ -88,7 +88,7 @@ public class HashSetvBitSetTest {
             return extractIndices(toRemove);
         }
     
-    private static int[] testBitSet(final int count) {
+    public static int[] testBitSet(final int count) {
         final BitSet toRemove = new BitSet();
         int found = 0;
         for (int i = 0; i < count; i++) {
@@ -98,7 +98,7 @@ public class HashSetvBitSetTest {
     }
     
 
-    private static int[] extractIndices(final HashSet<Integer> coll) {
+    public static int[] extractIndices(final HashSet<Integer> coll) {
         final int[] result = new int[coll.size()];
         int i = 0;
         for (final Integer index : coll) {
@@ -107,7 +107,7 @@ public class HashSetvBitSetTest {
         return result;
     }
 
-    private static int[] extractIndices(final BitSet coll) {
+    public static int[] extractIndices(final BitSet coll) {
         final int[] result = new int[coll.cardinality()];
         int i = 0;
         int j=0;
@@ -135,7 +135,7 @@ public class HashSetvBitSetTest {
         Assert.assertTrue(timeDiff <= 0);
     }
 
-    private long printTimes(final int arraySize, final int bitSetSize) {
+    public long printTimes(final int arraySize, final int bitSetSize) {
         final int[] array = new int[arraySize];
         final BitSet remove = new BitSet();
         for (int i = 0; i < bitSetSize; i++) {
@@ -148,7 +148,7 @@ public class HashSetvBitSetTest {
         return bitSet - extract;
     }
 
-    private long timeBitSetRemoveAll(final int[] array, final BitSet toRemove) {
+    public long timeBitSetRemoveAll(final int[] array, final BitSet toRemove) {
         int[] output = new int[0];
         final long start = System.nanoTime();
         for(int i = 0; i < LOOPS2; i++){
@@ -159,7 +159,7 @@ public class HashSetvBitSetTest {
         return end - start;
     }
     
-    private long timeExtractRemoveAll(final int[] array, final BitSet toRemove) {
+    public long timeExtractRemoveAll(final int[] array, final BitSet toRemove) {
         int[] output = new int[0];
         final long start = System.nanoTime();
         for(int i = 0; i < LOOPS2; i++){

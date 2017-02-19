@@ -1501,7 +1501,7 @@ public class SystemUtils {
      * @param versionPrefix the prefix for the java version
      * @return true if matches, or false if not or can't determine
      */
-    private static boolean getJavaVersionMatches(final String versionPrefix) {
+    public static boolean getJavaVersionMatches(final String versionPrefix) {
         return isJavaVersionMatch(JAVA_SPECIFICATION_VERSION, versionPrefix);
     }
 
@@ -1512,7 +1512,7 @@ public class SystemUtils {
      * @param osVersionPrefix the prefix for the version
      * @return true if matches, or false if not or can't determine
      */
-    private static boolean getOSMatches(final String osNamePrefix, final String osVersionPrefix) {
+    public static boolean getOSMatches(final String osNamePrefix, final String osVersionPrefix) {
         return isOSMatch(OS_NAME, OS_VERSION, osNamePrefix, osVersionPrefix);
     }
 
@@ -1522,7 +1522,7 @@ public class SystemUtils {
      * @param osNamePrefix the prefix for the os name
      * @return true if matches, or false if not or can't determine
      */
-    private static boolean getOSMatchesName(final String osNamePrefix) {
+    public static boolean getOSMatchesName(final String osNamePrefix) {
         return isOSNameMatch(OS_NAME, osNamePrefix);
     }
 
@@ -1539,7 +1539,7 @@ public class SystemUtils {
      * @param property the system property name
      * @return the system property value or {@code null} if a security problem occurs
      */
-    private static String getSystemProperty(final String property) {
+    public static String getSystemProperty(final String property) {
         try {
             return System.getProperty(property);
         } catch (final SecurityException ex) {

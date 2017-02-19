@@ -42,7 +42,7 @@ public class ConcurrentRuntimeException extends RuntimeException {
      * Creates a new, uninitialized instance of {@code
      * ConcurrentRuntimeException}.
      */
-    protected ConcurrentRuntimeException() {
+    public ConcurrentRuntimeException() {
         super();
     }
 

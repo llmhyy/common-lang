@@ -282,7 +282,7 @@ public class ThreadUtils {
      */
     private final static class AlwaysTruePredicate implements ThreadPredicate, ThreadGroupPredicate{
 
-        private AlwaysTruePredicate() {
+        public AlwaysTruePredicate() {
         }
 
         @Override

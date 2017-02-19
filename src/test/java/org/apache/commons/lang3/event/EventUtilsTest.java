@@ -262,7 +262,7 @@ public class EventUtilsTest
             listeners.fire().propertyChange(new PropertyChangeEvent(this, "property", oldValue, property));
         }
 
-        protected void addVetoableChangeListener(final VetoableChangeListener listener)
+        public void addVetoableChangeListener(final VetoableChangeListener listener)
         {
             // Do nothing!
         }

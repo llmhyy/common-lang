@@ -290,7 +290,7 @@ public class EnumUtilsTest {
 
     }
 
-    private void assertArrayEquals(final long[] actual, final long... expected) {
+    public void assertArrayEquals(final long[] actual, final long... expected) {
         Assert.assertArrayEquals(expected, actual);
     }
 

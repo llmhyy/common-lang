@@ -105,11 +105,11 @@ public class StringEscapeUtilsTest {
         assertEquals(expected, actual);
     }
     
-    private void assertEscapeJava(final String escaped, final String original) throws IOException {
+    public void assertEscapeJava(final String escaped, final String original) throws IOException {
         assertEscapeJava(null, escaped, original);
     }
 
-    private void assertEscapeJava(String message, final String expected, final String original) throws IOException {
+    public void assertEscapeJava(String message, final String expected, final String original) throws IOException {
         final String converted = StringEscapeUtils.escapeJava(original);
         message = "escapeJava(String) failed" + (message == null ? "" : (": " + message));
         assertEquals(message, expected, converted);
@@ -154,11 +154,11 @@ public class StringEscapeUtilsTest {
         assertUnescapeJava("Unicode as final character", "\uABCD", "\\uabcd");
     }
 
-    private void assertUnescapeJava(final String unescaped, final String original) throws IOException {
+    public void assertUnescapeJava(final String unescaped, final String original) throws IOException {
         assertUnescapeJava(null, unescaped, original);
     }
 
-    private void assertUnescapeJava(final String message, final String unescaped, final String original) throws IOException {
+    public void assertUnescapeJava(final String message, final String unescaped, final String original) throws IOException {
         final String expected = unescaped;
         final String actual = StringEscapeUtils.unescapeJava(original);
 
@@ -459,7 +459,7 @@ public class StringEscapeUtilsTest {
         checkCsvEscapeWriter("", "");
     }
 
-    private void checkCsvEscapeWriter(final String expected, final String value) {
+    public void checkCsvEscapeWriter(final String expected, final String value) {
         try {
             final StringWriter writer = new StringWriter();
             StringEscapeUtils.ESCAPE_CSV.translate(value, writer);
@@ -497,7 +497,7 @@ public class StringEscapeUtilsTest {
         checkCsvUnescapeWriter("\"foo.bar\"",        "\"foo.bar\"");
     }
 
-    private void checkCsvUnescapeWriter(final String expected, final String value) {
+    public void checkCsvUnescapeWriter(final String expected, final String value) {
         try {
             final StringWriter writer = new StringWriter();
             StringEscapeUtils.UNESCAPE_CSV.translate(value, writer);

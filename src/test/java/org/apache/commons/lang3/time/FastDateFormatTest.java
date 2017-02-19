@@ -265,7 +265,7 @@ public class FastDateFormatTest {
     final static private int NTHREADS= 10;
     final static private int NROUNDS= 10000;
     
-    private AtomicLongArray measureTime(final Format printer, final Format parser) throws InterruptedException {
+    public AtomicLongArray measureTime(final Format printer, final Format parser) throws InterruptedException {
         final ExecutorService pool = Executors.newFixedThreadPool(NTHREADS);
         final AtomicInteger failures= new AtomicInteger(0);
         final AtomicLongArray totalElapsed= new AtomicLongArray(2);

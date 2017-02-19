@@ -753,7 +753,7 @@ public class ObjectUtils {
          *
          * @return the singleton value
          */
-        private Object readResolve() {
+        public Object readResolve() {
             return ObjectUtils.NULL;
         }
     }

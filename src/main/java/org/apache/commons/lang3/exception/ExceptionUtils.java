@@ -194,7 +194,7 @@ public class ExceptionUtils {
      * @return the wrapped exception, or <code>null</code> if not found
      */
     // TODO: Remove in Lang 4.0
-    private static Throwable getCauseUsingMethodName(final Throwable throwable, final String methodName) {
+    public static Throwable getCauseUsingMethodName(final Throwable throwable, final String methodName) {
         Method method = null;
         try {
             method = throwable.getClass().getMethod(methodName);
@@ -388,7 +388,7 @@ public class ExceptionUtils {
      * using references
      * @return index of the <code>type</code> within throwables nested within the specified <code>throwable</code>
      */
-    private static int indexOf(final Throwable throwable, final Class<?> type, int fromIndex, final boolean subclass) {
+    public static int indexOf(final Throwable throwable, final Class<?> type, int fromIndex, final boolean subclass) {
         if (throwable == null || type == null) {
             return -1;
         }
@@ -767,7 +767,7 @@ public class ExceptionUtils {
      * clause.
      */
     @SuppressWarnings("unchecked")
-    private static <R, T extends Throwable> R typeErasure(Throwable throwable) throws T {
+    public static <R, T extends Throwable> R typeErasure(Throwable throwable) throws T {
         throw (T) throwable;
     }
 

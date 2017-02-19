@@ -624,7 +624,7 @@ public class NumberUtils {
      * @param str the string representation of the number
      * @return mantissa of the given number
      */
-    private static String getMantissa(final String str) {
+    public static String getMantissa(final String str) {
         return getMantissa(str, str.length());
     }
 
@@ -637,7 +637,7 @@ public class NumberUtils {
      * @param stopPos the position of the exponent or decimal point
      * @return mantissa of the given number
      */
-    private static String getMantissa(final String str, final int stopPos) {
+    public static String getMantissa(final String str, final int stopPos) {
         final char firstChar = str.charAt(0);
         final boolean hasSign = (firstChar == '-' || firstChar == '+');
 
@@ -652,7 +652,7 @@ public class NumberUtils {
      * @param str  the String to check
      * @return if it is all zeros or <code>null</code>
      */
-    private static boolean isAllZeros(final String str) {
+    public static boolean isAllZeros(final String str) {
         if (str == null) {
             return true;
         }
@@ -1111,7 +1111,7 @@ public class NumberUtils {
      * @param array  the array to check
      * @throws IllegalArgumentException if {@code array} is either {@code null} or empty
      */
-    private static void validateArray(final Object array) {
+    public static void validateArray(final Object array) {
         if (array == null) {
             throw new IllegalArgumentException("The Array must not be null");
         }        
@@ -1514,7 +1514,7 @@ public class NumberUtils {
         }
     }
 
-    private static boolean withDecimalsParsing(final String str, final int beginIdx) {
+    public static boolean withDecimalsParsing(final String str, final int beginIdx) {
         int decimalPoints = 0;
         for (int i = beginIdx; i < str.length(); i++) {
             final boolean isDecimalPoint = str.charAt(i) == '.';

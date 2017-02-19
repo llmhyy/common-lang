@@ -1784,7 +1784,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
      * @param len  the length, must be valid
      * @throws IndexOutOfBoundsException if any index is invalid
      */
-    private void deleteImpl(final int startIndex, final int endIndex, final int len) {
+    public void deleteImpl(final int startIndex, final int endIndex, final int len) {
         System.arraycopy(buffer, endIndex, buffer, startIndex, size - endIndex);
         size -= len;
     }
@@ -1923,7 +1923,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
      * @param insertLen  the length of the insert string, must be valid
      * @throws IndexOutOfBoundsException if any index is invalid
      */
-    private void replaceImpl(final int startIndex, final int endIndex, final int removeLen, final String insertStr, final int insertLen) {
+    public void replaceImpl(final int startIndex, final int endIndex, final int removeLen, final String insertStr, final int insertLen) {
         final int newSize = size - removeLen + insertLen;
         if (insertLen != removeLen) {
             ensureCapacity(newSize);
@@ -2103,7 +2103,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
      * @return this, to enable chaining
      * @throws IndexOutOfBoundsException if any index is invalid
      */
-    private StrBuilder replaceImpl(
+    public StrBuilder replaceImpl(
             final StrMatcher matcher, final String replaceStr,
             final int from, int to, int replaceCount) {
         if (matcher == null || size == 0) {
@@ -2919,7 +2919,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
      * @return the new string
      * @throws IndexOutOfBoundsException if the index is invalid
      */
-    protected int validateRange(final int startIndex, int endIndex) {
+    public int validateRange(final int startIndex, int endIndex) {
         if (startIndex < 0) {
             throw new StringIndexOutOfBoundsException(startIndex);
         }
@@ -2938,7 +2938,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
      * @param index  the index, must be valid
      * @throws IndexOutOfBoundsException if the index is invalid
      */
-    protected void validateIndex(final int index) {
+    public void validateIndex(final int index) {
         if (index < 0 || index > size) {
             throw new StringIndexOutOfBoundsException(index);
         }
@@ -2959,7 +2959,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
 
         /** {@inheritDoc} */
         @Override
-        protected List<String> tokenize(final char[] chars, final int offset, final int count) {
+        public List<String> tokenize(final char[] chars, final int offset, final int count) {
             if (chars == null) {
                 return super.tokenize(StrBuilder.this.buffer, 0, StrBuilder.this.size());
             }

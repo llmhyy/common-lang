@@ -474,7 +474,7 @@ public class DurationFormatUtils {
      * @param count the size to pad to (ignored if {@code padWithZeros} is false)
      * @return the string result
      */
-    private static String paddedValue(final long value, final boolean padWithZeros, final int count) {
+    public static String paddedValue(final long value, final boolean padWithZeros, final int count) {
         final String longString = Long.toString(value);
         return padWithZeros ? StringUtils.leftPad(longString, count, '0') : longString;
     }

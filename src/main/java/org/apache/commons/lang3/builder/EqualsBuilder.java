@@ -400,7 +400,7 @@ public class EqualsBuilder implements Builder<Boolean> {
      * @param useTransients  whether to test transient fields
      * @param excludeFields  array of field names to exclude from testing
      */
-    private static void reflectionAppend(
+    public static void reflectionAppend(
         final Object lhs,
         final Object rhs,
         final Class<?> clazz,
@@ -493,7 +493,7 @@ public class EqualsBuilder implements Builder<Boolean> {
      * @param lhs  the left hand object, an array
      * @param rhs  the right hand object
      */
-    private void appendArray(final Object lhs, final Object rhs) {
+    public void appendArray(final Object lhs, final Object rhs) {
         if (lhs.getClass() != rhs.getClass()) {
             // Here when we compare different dimensions, for example: a boolean[][] to a boolean[]
             this.setEquals(false);
@@ -965,7 +965,7 @@ public class EqualsBuilder implements Builder<Boolean> {
      * @param isEquals The value to set.
      * @since 2.1
      */
-    protected void setEquals(final boolean isEquals) {
+    public void setEquals(final boolean isEquals) {
         this.isEquals = isEquals;
     }
 

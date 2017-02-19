@@ -309,7 +309,7 @@ public class CompareToBuilder implements Builder<Integer> {
      * @param useTransients  whether to compare transient fields
      * @param excludeFields  fields to exclude
      */
-    private static void reflectionAppend(
+    public static void reflectionAppend(
         final Object lhs,
         final Object rhs,
         final Class<?> clazz,

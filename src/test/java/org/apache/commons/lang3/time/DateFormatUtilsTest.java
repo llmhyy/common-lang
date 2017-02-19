@@ -115,30 +115,30 @@ public class DateFormatUtilsTest {
         assertEquals ("2005-01-01T12:00:00", DateFormatUtils.formatUTC(c.getTime().getTime(), DateFormatUtils.ISO_DATETIME_FORMAT.getPattern(), Locale.US));
     }
 
-    private void assertFormats(String expectedValue, String pattern, TimeZone timeZone, Calendar cal) {
+    public void assertFormats(String expectedValue, String pattern, TimeZone timeZone, Calendar cal) {
         assertEquals(expectedValue, DateFormatUtils.format(cal.getTime(), pattern, timeZone));
         assertEquals(expectedValue, DateFormatUtils.format(cal.getTime().getTime(), pattern, timeZone));
         assertEquals(expectedValue, DateFormatUtils.format(cal, pattern, timeZone));
     }
 
-    private Calendar createFebruaryTestDate(final TimeZone timeZone) {
+    public Calendar createFebruaryTestDate(final TimeZone timeZone) {
         final Calendar cal = Calendar.getInstance(timeZone);
         cal.set(2002, Calendar.FEBRUARY, 23, 9, 11, 12);
         return cal;
     }
 
-    private Calendar createJuneTestDate(final TimeZone timeZone) {
+    public Calendar createJuneTestDate(final TimeZone timeZone) {
         final Calendar cal = Calendar.getInstance(timeZone);
         cal.set(2003, Calendar.JUNE, 8, 10, 11, 12);
         return cal;
     }
 
-    private void testGmtMinus3(String expectedValue, String pattern) {
+    public void testGmtMinus3(String expectedValue, String pattern) {
         final TimeZone timeZone = TimeZone.getTimeZone("GMT-3");
         assertFormats(expectedValue, pattern, timeZone, createFebruaryTestDate(timeZone));
     }
 
-    private void testUTC(String expectedValue, String pattern) {
+    public void testUTC(String expectedValue, String pattern) {
         final TimeZone timeZone = TimeZone.getTimeZone("UTC");
         assertFormats(expectedValue, pattern, timeZone, createFebruaryTestDate(timeZone));
     }

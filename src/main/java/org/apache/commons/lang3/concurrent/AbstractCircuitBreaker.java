@@ -90,7 +90,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      * @param state the state to be converted
      * @return the boolean open flag
      */
-    protected static boolean isOpen(State state) {
+    public static boolean isOpen(State state) {
         return state == State.OPEN;
     }
 
@@ -100,7 +100,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      *
      * @param newState the new state to be set
      */
-    protected void changeState(State newState) {
+    public void changeState(State newState) {
         if (state.compareAndSet(newState.oppositeState(), newState)) {
             changeSupport.firePropertyChange(PROPERTY_NAME, !isOpen(newState), isOpen(newState));
         }

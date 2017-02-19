@@ -50,7 +50,7 @@ public class BasicThreadFactoryTest {
      *
      * @param factory the factory to be checked
      */
-    private void checkFactoryDefaults(final BasicThreadFactory factory) {
+    public void checkFactoryDefaults(final BasicThreadFactory factory) {
         assertNull("Got a naming pattern", factory.getNamingPattern());
         assertNull("Got an exception handler", factory
                 .getUncaughtExceptionHandler());
@@ -168,7 +168,7 @@ public class BasicThreadFactoryTest {
      *
      * @param flag the value of the flag
      */
-    private void checkDaemonFlag(final boolean flag) {
+    public void checkDaemonFlag(final boolean flag) {
         final ThreadFactory wrapped = EasyMock.createMock(ThreadFactory.class);
         final Runnable r = EasyMock.createMock(Runnable.class);
         final Thread t = new Thread();

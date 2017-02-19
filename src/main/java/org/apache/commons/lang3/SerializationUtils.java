@@ -317,7 +317,7 @@ public class SerializationUtils {
          * @throws ClassNotFoundException If class of a serialized object cannot be found.
          */
         @Override
-        protected Class<?> resolveClass(final ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+        public Class<?> resolveClass(final ObjectStreamClass desc) throws IOException, ClassNotFoundException {
             final String name = desc.getName();
             try {
                 return Class.forName(name, false, classLoader);

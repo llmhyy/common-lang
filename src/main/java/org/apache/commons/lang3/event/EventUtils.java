@@ -122,7 +122,7 @@ public class EventUtils {
          * @param method the listener method invoked
          * @return a flag whether the parameters could be matched
          */
-        private boolean hasMatchingParametersMethod(final Method method) {
+        public boolean hasMatchingParametersMethod(final Method method) {
             return MethodUtils.getAccessibleMethod(target.getClass(), methodName, method.getParameterTypes()) != null;
         }
     }

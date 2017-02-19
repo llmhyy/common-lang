@@ -317,7 +317,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @param increment the increment for the internal counter
      * @return a flag whether the circuit breaker is now closed
      */
-    private boolean performStateCheck(int increment) {
+    public boolean performStateCheck(int increment) {
         CheckIntervalData currentData;
         CheckIntervalData nextData;
         State currentState;
@@ -348,7 +348,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @param nextData the replacing check data object
      * @return a flag whether the update was successful
      */
-    private boolean updateCheckIntervalData(CheckIntervalData currentData,
+    public boolean updateCheckIntervalData(CheckIntervalData currentData,
             CheckIntervalData nextData) {
         return currentData == nextData
                 || checkIntervalData.compareAndSet(currentData, nextData);
@@ -360,7 +360,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      *
      * @param newState the new state to be set
      */
-    private void changeStateAndStartNewCheckInterval(State newState) {
+    public void changeStateAndStartNewCheckInterval(State newState) {
         changeState(newState);
         checkIntervalData.set(new CheckIntervalData(0, now()));
     }
@@ -376,7 +376,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @param time the current time
      * @return the updated {@code CheckIntervalData} object
      */
-    private CheckIntervalData nextCheckIntervalData(int increment,
+    public CheckIntervalData nextCheckIntervalData(int increment,
             CheckIntervalData currentData, State currentState, long time) {
         CheckIntervalData nextData;
         if (stateStrategy(currentState).isCheckIntervalFinished(this, currentData, time)) {
@@ -404,7 +404,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @return the corresponding {@code StateStrategy}
      * @throws CircuitBreakingException if the strategy cannot be resolved
      */
-    private static StateStrategy stateStrategy(State state) {
+    public static StateStrategy stateStrategy(State state) {
         StateStrategy strategy = STRATEGY_MAP.get(state);
         return strategy;
     }
@@ -415,7 +415,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      *
      * @return the strategy map
      */
-    private static Map<State, StateStrategy> createStrategyMap() {
+    public static Map<State, StateStrategy> createStrategyMap() {
         Map<State, StateStrategy> map = new EnumMap<State, StateStrategy>(State.class);
         map.put(State.CLOSED, new StateStrategyClosed());
         map.put(State.OPEN, new StateStrategyOpen());
@@ -515,7 +515,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * @param breaker the {@code CircuitBreaker}
          * @return the check interval to be applied
          */
-        protected abstract long fetchCheckInterval(EventCountCircuitBreaker breaker);
+        public abstract long fetchCheckInterval(EventCountCircuitBreaker breaker);
     }
 
     /**
@@ -536,7 +536,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * {@inheritDoc}
          */
         @Override
-        protected long fetchCheckInterval(EventCountCircuitBreaker breaker) {
+        public long fetchCheckInterval(EventCountCircuitBreaker breaker) {
             return breaker.getOpeningInterval();
         }
     }
@@ -560,7 +560,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * {@inheritDoc}
          */
         @Override
-        protected long fetchCheckInterval(EventCountCircuitBreaker breaker) {
+        public long fetchCheckInterval(EventCountCircuitBreaker breaker) {
             return breaker.getClosingInterval();
         }
     }

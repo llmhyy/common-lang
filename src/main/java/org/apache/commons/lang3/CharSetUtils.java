@@ -230,7 +230,7 @@ public class CharSetUtils {
      * @param expect whether to evaluate on match, or non-match
      * @return the modified String, not null
      */
-    private static String modify(final String str, final String[] set, final boolean expect) {
+    public static String modify(final String str, final String[] set, final boolean expect) {
         final CharSet chars = CharSet.getInstance(set);
         final StringBuilder buffer = new StringBuilder(str.length());
         final char[] chrs = str.toCharArray();
@@ -250,7 +250,7 @@ public class CharSetUtils {
      * @param strings String[] whose elements are being checked for emptiness
      * @return whether or not the String is empty
      */
-    private static boolean deepEmpty(final String[] strings) {
+    public static boolean deepEmpty(final String[] strings) {
         if (strings != null) {
             for (final String s : strings) {
                 if (StringUtils.isNotEmpty(s)) {

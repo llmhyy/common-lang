@@ -96,7 +96,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
 
     private static final FormatCache<FastDateFormat> cache= new FormatCache<FastDateFormat>() {
         @Override
-        protected FastDateFormat createInstance(final String pattern, final TimeZone timeZone, final Locale locale) {
+        public FastDateFormat createInstance(final String pattern, final TimeZone timeZone, final Locale locale) {
             return new FastDateFormat(pattern, timeZone, locale);
         }
     };
@@ -374,7 +374,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @param locale  non-null locale to use
      * @throws NullPointerException if pattern, timeZone, or locale is null.
      */
-    protected FastDateFormat(final String pattern, final TimeZone timeZone, final Locale locale) {
+    public FastDateFormat(final String pattern, final TimeZone timeZone, final Locale locale) {
         this(pattern, timeZone, locale, null);
     }
 
@@ -389,7 +389,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @param centuryStart The start of the 100 year period to use as the "default century" for 2 digit year parsing.  If centuryStart is null, defaults to now - 80 years
      * @throws NullPointerException if pattern, timeZone, or locale is null.
      */
-    protected FastDateFormat(final String pattern, final TimeZone timeZone, final Locale locale, final Date centuryStart) {
+    public FastDateFormat(final String pattern, final TimeZone timeZone, final Locale locale, final Date centuryStart) {
         printer= new FastDatePrinter(pattern, timeZone, locale);
         parser= new FastDateParser(pattern, timeZone, locale, centuryStart);
     }
@@ -665,7 +665,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @return the specified string buffer
      */
     @Deprecated
-    protected StringBuffer applyRules(final Calendar calendar, final StringBuffer buf) {
+    public StringBuffer applyRules(final Calendar calendar, final StringBuffer buf) {
         return printer.applyRules(calendar, buf);
     }
 }

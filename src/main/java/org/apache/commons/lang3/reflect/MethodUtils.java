@@ -455,7 +455,7 @@ public class MethodUtils {
         return method.invoke(null, args);
     }
 
-    private static Object[] toVarArgs(Method method, Object[] args) {
+    public static Object[] toVarArgs(Method method, Object[] args) {
         if (method.isVarArgs()) {
             Class<?>[] methodParameterTypes = method.getParameterTypes();
             args = getVarArgs(args, methodParameterTypes);
@@ -596,7 +596,7 @@ public class MethodUtils {
      * @param parameterTypes The parameter type signatures
      * @return the accessible method or {@code null} if not found
      */
-    private static Method getAccessibleMethodFromSuperclass(final Class<?> cls,
+    public static Method getAccessibleMethodFromSuperclass(final Class<?> cls,
             final String methodName, final Class<?>... parameterTypes) {
         Class<?> parentClass = cls.getSuperclass();
         while (parentClass != null) {
@@ -627,7 +627,7 @@ public class MethodUtils {
      * @param parameterTypes The parameter type signatures
      * @return the accessible method or {@code null} if not found
      */
-    private static Method getAccessibleMethodFromInterfaceNest(Class<?> cls,
+    public static Method getAccessibleMethodFromInterfaceNest(Class<?> cls,
             final String methodName, final Class<?>... parameterTypes) {
         // Search up the superclass chain
         for (; cls != null; cls = cls.getSuperclass()) {
@@ -761,7 +761,7 @@ public class MethodUtils {
      * @param toClassArray
      * @return the aggregate number of inheritance hops between assignable argument class types.
      */
-    private static int distance(Class<?>[] classArray, Class<?>[] toClassArray) {
+    public static int distance(Class<?>[] classArray, Class<?>[] toClassArray) {
     	int answer=0;
     	
     	if (!ClassUtils.isAssignable(classArray, toClassArray, true)) {

@@ -121,7 +121,7 @@ public class ToStringBuilderTest {
      * @param o the object to create the string for.
      * @return a String in the Object.toString format.
      */
-    private String toBaseString(final Object o) {
+    public String toBaseString(final Object o) {
         return o.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(o));
     }
 

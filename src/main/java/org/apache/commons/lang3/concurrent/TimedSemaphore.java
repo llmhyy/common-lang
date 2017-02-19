@@ -388,7 +388,7 @@ public class TimedSemaphore {
      *
      * @return the executor service
      */
-    protected ScheduledExecutorService getExecutorService() {
+    public ScheduledExecutorService getExecutorService() {
         return executorService;
     }
 
@@ -399,7 +399,7 @@ public class TimedSemaphore {
      *
      * @return a future object representing the task scheduled
      */
-    protected ScheduledFuture<?> startTimer() {
+    public ScheduledFuture<?> startTimer() {
         return getExecutorService().scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

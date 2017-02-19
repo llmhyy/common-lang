@@ -363,7 +363,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
         return new ReflectionToStringBuilder(object).setExcludeFieldNames(excludeFieldNames).toString();
     }
     
-    private static Object checkNotNull(final Object obj) {
+    public static Object checkNotNull(final Object obj) {
         if (obj == null) {
             throw new IllegalArgumentException("The Object passed in should not be null.");
         }
@@ -496,7 +496,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      *            The Field to test.
      * @return Whether or not to append the given <code>Field</code>.
      */
-    protected boolean accept(final Field field) {
+    public boolean accept(final Field field) {
         if (field.getName().indexOf(ClassUtils.INNER_CLASS_SEPARATOR_CHAR) != -1) {
             // Reject field from inner class.
             return false;
@@ -533,7 +533,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @param clazz
      *            The class of object parameter
      */
-    protected void appendFieldsIn(final Class<?> clazz) {
+    public void appendFieldsIn(final Class<?> clazz) {
         if (clazz.isArray()) {
             this.reflectionAppendArray(this.getObject());
             return;
@@ -593,7 +593,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      *
      * @see java.lang.reflect.Field#get(Object)
      */
-    protected Object getValue(final Field field) throws IllegalArgumentException, IllegalAccessException {
+    public Object getValue(final Field field) throws IllegalArgumentException, IllegalAccessException {
         return field.get(this.getObject());
     }
 

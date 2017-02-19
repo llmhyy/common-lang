@@ -42,7 +42,7 @@ public class AtomicSafeInitializerTest extends
      * @return the {@code AtomicSafeInitializer} under test
      */
     @Override
-    protected ConcurrentInitializer<Object> createInitializer() {
+    public ConcurrentInitializer<Object> createInitializer() {
         return initializer;
     }
 
@@ -71,7 +71,7 @@ public class AtomicSafeInitializerTest extends
         final AtomicInteger initCounter = new AtomicInteger();
 
         @Override
-        protected Object initialize() throws ConcurrentException {
+        public Object initialize() throws ConcurrentException {
             initCounter.incrementAndGet();
             return new Object();
         }

@@ -97,7 +97,7 @@ public abstract class BackgroundInitializer<T> implements
      * Creates a new instance of {@code BackgroundInitializer}. No external
      * {@code ExecutorService} is used.
      */
-    protected BackgroundInitializer() {
+    public BackgroundInitializer() {
         this(null);
     }
 
@@ -111,7 +111,7 @@ public abstract class BackgroundInitializer<T> implements
      * @param exec an external {@code ExecutorService} to be used for task
      * execution
      */
-    protected BackgroundInitializer(final ExecutorService exec) {
+    public BackgroundInitializer(final ExecutorService exec) {
         setExternalExecutor(exec);
     }
 
@@ -244,7 +244,7 @@ public abstract class BackgroundInitializer<T> implements
      *
      * @return the {@code ExecutorService} for executing the background task
      */
-    protected synchronized final ExecutorService getActiveExecutor() {
+    public synchronized final ExecutorService getActiveExecutor() {
         return executor;
     }
 
@@ -259,7 +259,7 @@ public abstract class BackgroundInitializer<T> implements
      *
      * @return the number of background tasks required by this initializer
      */
-    protected int getTaskCount() {
+    public int getTaskCount() {
         return 1;
     }
 
@@ -273,7 +273,7 @@ public abstract class BackgroundInitializer<T> implements
      * @return a result object
      * @throws Exception if an error occurs
      */
-    protected abstract T initialize() throws Exception;
+    public abstract T initialize() throws Exception;
 
     /**
      * Creates a task for the background initialization. The {@code Callable}
@@ -286,7 +286,7 @@ public abstract class BackgroundInitializer<T> implements
      * task
      * @return a task for the background initialization
      */
-    private Callable<T> createTask(final ExecutorService execDestroy) {
+    public Callable<T> createTask(final ExecutorService execDestroy) {
         return new InitializationTask(execDestroy);
     }
 
@@ -296,7 +296,7 @@ public abstract class BackgroundInitializer<T> implements
      *
      * @return the {@code ExecutorService} to be used
      */
-    private ExecutorService createExecutor() {
+    public ExecutorService createExecutor() {
         return Executors.newFixedThreadPool(getTaskCount());
     }
 

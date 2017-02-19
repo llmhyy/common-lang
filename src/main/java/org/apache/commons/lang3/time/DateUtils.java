@@ -359,7 +359,7 @@ public class DateUtils {
      * @throws ParseException if none of the date patterns were suitable
      * @see java.util.Calendar#isLenient()
      */
-    private static Date parseDateWithLeniency(
+    public static Date parseDateWithLeniency(
             final String str, final Locale locale, final String[] parsePatterns, final boolean lenient) throws ParseException {
         if (str == null || parsePatterns == null) {
             throw new IllegalArgumentException("Date and Patterns must not be null");
@@ -510,7 +510,7 @@ public class DateUtils {
      * @return the new {@code Date} with the amount added
      * @throws IllegalArgumentException if the date is null
      */
-    private static Date add(final Date date, final int calendarField, final int amount) {
+    public static Date add(final Date date, final int calendarField, final int amount) {
         if (date == null) {
             throw new IllegalArgumentException("The date must not be null");
         }
@@ -639,7 +639,7 @@ public class DateUtils {
      * @throws IllegalArgumentException if the date is null
      * @since 2.4
      */
-    private static Date set(final Date date, final int calendarField, final int amount) {
+    public static Date set(final Date date, final int calendarField, final int amount) {
         if (date == null) {
             throw new IllegalArgumentException("The date must not be null");
         }
@@ -950,7 +950,7 @@ public class DateUtils {
      * @param modType  type to truncate, round or ceiling
      * @throws ArithmeticException if the year is over 280 million
      */
-    private static void modify(final Calendar val, final int field, final ModifyType modType) {
+    public static void modify(final Calendar val, final int field, final ModifyType modType) {
         if (val.get(Calendar.YEAR) > 280000000) {
             throw new ArithmeticException("Calendar value too large for accurate calculations");
         }
@@ -1640,7 +1640,7 @@ public class DateUtils {
      * fragment is not supported
      * @since 2.4
      */
-    private static long getFragment(final Date date, final int fragment, final TimeUnit unit) {
+    public static long getFragment(final Date date, final int fragment, final TimeUnit unit) {
         if(date == null) {
             throw  new IllegalArgumentException("The date must not be null");
         }
@@ -1660,7 +1660,7 @@ public class DateUtils {
      * fragment is not supported
      * @since 2.4
      */
-    private static long getFragment(final Calendar calendar, final int fragment, final TimeUnit unit) {
+    public static long getFragment(final Calendar calendar, final int fragment, final TimeUnit unit) {
         if(calendar == null) {
             throw  new IllegalArgumentException("The date must not be null"); 
         }

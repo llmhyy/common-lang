@@ -181,7 +181,7 @@ public class HashCodeBuilder implements Builder<Integer> {
      * @param excludeFields
      *            Collection of String field names to exclude from use in calculation of hash code
      */
-    private static void reflectionAppend(final Object object, final Class<?> clazz, final HashCodeBuilder builder, final boolean useTransients,
+    public static void reflectionAppend(final Object object, final Class<?> clazz, final HashCodeBuilder builder, final boolean useTransients,
             final String[] excludeFields) {
         if (isRegistered(object)) {
             return;
@@ -866,7 +866,7 @@ public class HashCodeBuilder implements Builder<Integer> {
      * @param object
      *            the array to add to the <code>hashCode</code>
      */
-    private void appendArray(final Object object) {
+    public void appendArray(final Object object) {
         // 'Switch' on type of array, to dispatch to the correct handler
         // This handles multi dimensional arrays
         if (object instanceof long[]) {

@@ -873,7 +873,7 @@ public class StringUtils {
         return pattern.matcher(decomposed).replaceAll(StringUtils.EMPTY);
     }
 
-    private static void convertRemainingAccentCharacters(StringBuilder decomposed) {
+    public static void convertRemainingAccentCharacters(StringBuilder decomposed) {
         for (int i = 0; i < decomposed.length(); i++) {
             if (decomposed.charAt(i) == '\u0141') {
                 decomposed.deleteCharAt(i);
@@ -1398,7 +1398,7 @@ public class StringUtils {
      *  {@code -1} ({@code INDEX_NOT_FOUND}) if no match or {@code null} string input
      */
     // Shared code between ordinalIndexOf(String,String,int) and lastOrdinalIndexOf(String,String,int)
-    private static int ordinalIndexOf(final CharSequence str, final CharSequence searchStr, final int ordinal, final boolean lastIndex) {
+    public static int ordinalIndexOf(final CharSequence str, final CharSequence searchStr, final int ordinal, final boolean lastIndex) {
         if (str == null || searchStr == null || ordinal <= 0) {
             return INDEX_NOT_FOUND;
         }
@@ -3219,7 +3219,7 @@ public class StringUtils {
      * @return an array of parsed Strings, {@code null} if null String input
      * @since 2.4
      */
-    private static String[] splitByWholeSeparatorWorker(
+    public static String[] splitByWholeSeparatorWorker(
             final String str, final String separator, final int max, final boolean preserveAllTokens) {
         if (str == null) {
             return null;
@@ -3362,7 +3362,7 @@ public class StringUtils {
      * separators are treated as one separator.
      * @return an array of parsed Strings, {@code null} if null String input
      */
-    private static String[] splitWorker(final String str, final char separatorChar, final boolean preserveAllTokens) {
+    public static String[] splitWorker(final String str, final char separatorChar, final boolean preserveAllTokens) {
         // Performance tuned for 2.0 (JDK1.4)
 
         if (str == null) {
@@ -3487,7 +3487,7 @@ public class StringUtils {
      * separators are treated as one separator.
      * @return an array of parsed Strings, {@code null} if null String input
      */
-    private static String[] splitWorker(final String str, final String separatorChars, final int max, final boolean preserveAllTokens) {
+    public static String[] splitWorker(final String str, final String separatorChars, final int max, final boolean preserveAllTokens) {
         // Performance tuned for 2.0 (JDK1.4)
         // Direct code is quicker than StringTokenizer.
         // Also, StringTokenizer uses isSpace() not isWhitespace()
@@ -3637,7 +3637,7 @@ public class StringUtils {
      * @return an array of parsed Strings, {@code null} if null String input
      * @since 2.4
      */
-    private static String[] splitByCharacterType(final String str, final boolean camelCase) {
+    public static String[] splitByCharacterType(final String str, final boolean camelCase) {
         if (str == null) {
             return null;
         }
@@ -5384,7 +5384,7 @@ public class StringUtils {
      *             and/or size 0)
      * @since 2.4
      */
-    private static String replaceEach(
+    public static String replaceEach(
             final String text, final String[] searchList, final String[] replacementList, final boolean repeat, final int timeToLive) {
 
         // mchyzer Performance note: This creates very few new objects (one major goal)
@@ -7826,7 +7826,7 @@ public class StringUtils {
         return Math.round(jw * 100.0D) / 100.0D;
     }
 
-    private static int[] matches(final CharSequence first, final CharSequence second) {
+    public static int[] matches(final CharSequence first, final CharSequence second) {
         CharSequence max, min;
         if (first.length() > second.length()) {
             max = first;
@@ -8027,7 +8027,7 @@ public class StringUtils {
      * @return {@code true} if the CharSequence starts with the prefix or
      *  both {@code null}
      */
-    private static boolean startsWith(final CharSequence str, final CharSequence prefix, final boolean ignoreCase) {
+    public static boolean startsWith(final CharSequence str, final CharSequence prefix, final boolean ignoreCase) {
         if (str == null || prefix == null) {
             return str == null && prefix == null;
         }
@@ -8140,7 +8140,7 @@ public class StringUtils {
      * @return {@code true} if the CharSequence starts with the prefix or
      *  both {@code null}
      */
-    private static boolean endsWith(final CharSequence str, final CharSequence suffix, final boolean ignoreCase) {
+    public static boolean endsWith(final CharSequence str, final CharSequence suffix, final boolean ignoreCase) {
         if (str == null || suffix == null) {
             return str == null && suffix == null;
         }
@@ -8267,7 +8267,7 @@ public class StringUtils {
      *
      * @return A new String if suffix was appended, the same string otherwise.
      */
-    private static String appendIfMissing(final String str, final CharSequence suffix, final boolean ignoreCase, final CharSequence... suffixes) {
+    public static String appendIfMissing(final String str, final CharSequence suffix, final boolean ignoreCase, final CharSequence... suffixes) {
         if (str == null || isEmpty(suffix) || endsWith(str, suffix, ignoreCase)) {
             return str;
         }
@@ -8368,7 +8368,7 @@ public class StringUtils {
      *
      * @return A new String if prefix was prepended, the same string otherwise.
      */
-    private static String prependIfMissing(final String str, final CharSequence prefix, final boolean ignoreCase, final CharSequence... prefixes) {
+    public static String prependIfMissing(final String str, final CharSequence prefix, final boolean ignoreCase, final CharSequence... prefixes) {
         if (str == null || isEmpty(prefix) || startsWith(str, prefix, ignoreCase)) {
             return str;
         }

@@ -183,7 +183,7 @@ public class EventListenerSupportTest {
             private static final long serialVersionUID = 1L;
 
             @Override
-            protected java.lang.reflect.InvocationHandler createInvocationHandler() {
+            public java.lang.reflect.InvocationHandler createInvocationHandler() {
                 return new ProxyInvocationHandler() {
                     /**
                      * {@inheritDoc}
@@ -211,7 +211,7 @@ public class EventListenerSupportTest {
         EasyMock.verify(listener);
     }
 
-    private void addDeregisterListener(final EventListenerSupport<VetoableChangeListener> listenerSupport) {
+    public void addDeregisterListener(final EventListenerSupport<VetoableChangeListener> listenerSupport) {
         listenerSupport.addListener(new VetoableChangeListener() {
             @Override
             public void vetoableChange(final PropertyChangeEvent e) {
@@ -220,7 +220,7 @@ public class EventListenerSupportTest {
         });
     }
 
-    private VetoableChangeListener createListener(final List<VetoableChangeListener> calledListeners) {
+    public VetoableChangeListener createListener(final List<VetoableChangeListener> calledListeners) {
         return new VetoableChangeListener() {
             @Override
             public void vetoableChange(final PropertyChangeEvent e) {

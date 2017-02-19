@@ -100,7 +100,7 @@ abstract class FormatCache<F extends Format> {
      * @throws IllegalArgumentException if pattern is invalid
      *  or <code>null</code>
      */
-    abstract protected F createInstance(String pattern, TimeZone timeZone, Locale locale);
+    abstract public F createInstance(String pattern, TimeZone timeZone, Locale locale);
         
     /**
      * <p>Gets a date/time formatter instance using the specified style,
@@ -116,7 +116,7 @@ abstract class FormatCache<F extends Format> {
      *  pattern defined
      */
     // This must remain private, see LANG-884 
-    private F getDateTimeInstance(final Integer dateStyle, final Integer timeStyle, final TimeZone timeZone, Locale locale) {
+    public F getDateTimeInstance(final Integer dateStyle, final Integer timeStyle, final TimeZone timeZone, Locale locale) {
         if (locale == null) {
             locale = Locale.getDefault();
         }

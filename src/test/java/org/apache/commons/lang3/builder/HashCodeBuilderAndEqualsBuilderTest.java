@@ -29,7 +29,7 @@ public class HashCodeBuilderAndEqualsBuilderTest {
 
     //-----------------------------------------------------------------------
 
-    private void testInteger(final boolean testTransients) {
+    public void testInteger(final boolean testTransients) {
         final Integer i1 = Integer.valueOf(12345);
         final Integer i2 = Integer.valueOf(12345);
         assertEqualsAndHashCodeContract(i1, i2, testTransients);
@@ -55,7 +55,7 @@ public class HashCodeBuilderAndEqualsBuilderTest {
         testFixture(true);
     }
 
-    private void testFixture(final boolean testTransients) {
+    public void testFixture(final boolean testTransients) {
         assertEqualsAndHashCodeContract(new TestFixture(2, 'c', "Test", (short) 2), new TestFixture(2, 'c', "Test", (short) 2), testTransients);
         assertEqualsAndHashCodeContract(
             new AllTransientFixture(2, 'c', "Test", (short) 2),
@@ -79,7 +79,7 @@ public class HashCodeBuilderAndEqualsBuilderTest {
      * @param rhs The Right-Hand-Side of the equals test
      * @param testTransients whether to test transient fields
      */
-    private void assertEqualsAndHashCodeContract(final Object lhs, final Object rhs, final boolean testTransients) {
+    public void assertEqualsAndHashCodeContract(final Object lhs, final Object rhs, final boolean testTransients) {
         if (EqualsBuilder.reflectionEquals(lhs, rhs, testTransients)) {
             // test a couple of times for consistency.
             assertEquals(HashCodeBuilder.reflectionHashCode(lhs, testTransients), HashCodeBuilder.reflectionHashCode(rhs, testTransients));

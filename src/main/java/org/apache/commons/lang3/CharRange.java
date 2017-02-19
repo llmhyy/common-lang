@@ -63,7 +63,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @param end  last character, inclusive, in this range
      * @param negated  true to express everything except the range
      */
-    private CharRange(char start, char end, final boolean negated) {
+    public CharRange(char start, char end, final boolean negated) {
         super();
         if (start > end) {
             final char temp = start;
@@ -277,7 +277,7 @@ final class CharRange implements Iterable<Character>, Serializable {
          *
          * @param r The character range
          */
-        private CharacterIterator(final CharRange r) {
+        public CharacterIterator(final CharRange r) {
             range = r;
             hasNext = true;
 
@@ -300,7 +300,7 @@ final class CharRange implements Iterable<Character>, Serializable {
         /**
          * Prepare the next character in the range.
          */
-        private void prepareNext() {
+        public void prepareNext() {
             if (range.negated) {
                 if (current == Character.MAX_VALUE) {
                     hasNext = false;

@@ -40,7 +40,7 @@ public class NumericEntityEscaper extends CodePointTranslator {
      * @param above int value representing the highest codepoint boundary
      * @param between whether to escape between the boundaries or outside them
      */
-    private NumericEntityEscaper(final int below, final int above, final boolean between) {
+    public NumericEntityEscaper(final int below, final int above, final boolean between) {
         this.below = below;
         this.above = above;
         this.between = between;

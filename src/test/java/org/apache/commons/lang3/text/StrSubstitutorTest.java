@@ -406,7 +406,7 @@ public class StrSubstitutorTest {
         map.put("name", "commons");
         final StrSubstitutor sub = new StrSubstitutor(map) {
             @Override
-            protected String resolveVariable(final String variableName, final StrBuilder buf, final int startPos, final int endPos) {
+            public String resolveVariable(final String variableName, final StrBuilder buf, final int startPos, final int endPos) {
                 assertEquals("name", variableName);
                 assertSame(builder, buf);
                 assertEquals(3, startPos);
@@ -639,7 +639,7 @@ public class StrSubstitutorTest {
     }
 
     //-----------------------------------------------------------------------
-    private void doTestReplace(final String expectedResult, final String replaceTemplate, final boolean substring) {
+    public void doTestReplace(final String expectedResult, final String replaceTemplate, final boolean substring) {
         final String expectedShortResult = expectedResult.substring(1, expectedResult.length() - 1);
         final StrSubstitutor sub = new StrSubstitutor(values);
 
@@ -712,7 +712,7 @@ public class StrSubstitutorTest {
         }
     }
 
-    private void doTestNoReplace(final String replaceTemplate) {
+    public void doTestNoReplace(final String replaceTemplate) {
         final StrSubstitutor sub = new StrSubstitutor(values);
 
         if (replaceTemplate == null) {

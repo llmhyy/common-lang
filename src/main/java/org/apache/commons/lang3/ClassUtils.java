@@ -447,7 +447,7 @@ public class ClassUtils {
      * @param cls  the class to look up, may be {@code null}
      * @param interfacesFound the {@code Set} of interfaces for the class
      */
-    private static void getAllInterfaces(Class<?> cls, final HashSet<Class<?>> interfacesFound) {
+    public static void getAllInterfaces(Class<?> cls, final HashSet<Class<?>> interfacesFound) {
         while (cls != null) {
             final Class<?>[] interfaces = cls.getInterfaces();
 
@@ -1037,7 +1037,7 @@ public class ClassUtils {
      * @param className  the class name
      * @return the converted name
      */
-    private static String toCanonicalName(String className) {
+    public static String toCanonicalName(String className) {
         className = StringUtils.deleteWhitespace(className);
         if (className == null) {
             throw new NullPointerException("className must not be null.");
@@ -1186,7 +1186,7 @@ public class ClassUtils {
      * @return canonical form of class name
      * @since 2.4
      */
-    private static String getCanonicalName(String className) {
+    public static String getCanonicalName(String className) {
         className = StringUtils.deleteWhitespace(className);
         if (className == null) {
             return null;
@@ -1298,7 +1298,7 @@ public class ClassUtils {
                         return nextSuperclass;
                     }
     
-                    private void walkInterfaces(final Set<Class<?>> addTo, final Class<?> c) {
+                    public void walkInterfaces(final Set<Class<?>> addTo, final Class<?> c) {
                         for (final Class<?> iface : c.getInterfaces()) {
                             if (!seenInterfaces.contains(iface)) {
                                 addTo.add(iface);

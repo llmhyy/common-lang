@@ -117,5 +117,5 @@ public abstract class LazyInitializer<T> implements ConcurrentInitializer<T> {
      * @return the managed data object
      * @throws ConcurrentException if an error occurs during object creation
      */
-    protected abstract T initialize() throws ConcurrentException;
+    public abstract T initialize() throws ConcurrentException;
 }

@@ -53,15 +53,15 @@ public class FastDatePrinterTest {
         return getInstance(format, TimeZone.getDefault(), Locale.getDefault());
     }
 
-    private DatePrinter getDateInstance(final int dateStyle, final Locale locale) {
+    public DatePrinter getDateInstance(final int dateStyle, final Locale locale) {
         return getInstance(FormatCache.getPatternForStyle(Integer.valueOf(dateStyle), null, locale), TimeZone.getDefault(), Locale.getDefault());
     }
 
-    private DatePrinter getInstance(final String format, final Locale locale) {
+    public DatePrinter getInstance(final String format, final Locale locale) {
         return getInstance(format, TimeZone.getDefault(), locale);
     }
 
-    private DatePrinter getInstance(final String format, final TimeZone timeZone) {
+    public DatePrinter getInstance(final String format, final TimeZone timeZone) {
         return getInstance(format, timeZone, Locale.getDefault());
     }
 
@@ -72,7 +72,7 @@ public class FastDatePrinterTest {
      * @param locale the locale to use
      * @return the DatePrinter to use for testing
      */
-    protected DatePrinter getInstance(final String format, final TimeZone timeZone, final Locale locale) {
+    public DatePrinter getInstance(final String format, final TimeZone timeZone, final Locale locale) {
         return new FastDatePrinter(format, timeZone, locale);
     }
 
@@ -276,7 +276,7 @@ public class FastDatePrinterTest {
         assertEquals("+00:00", colonFormat.format(c));
     }
 
-    private static Calendar initializeCalendar(TimeZone tz) {
+    public static Calendar initializeCalendar(TimeZone tz) {
         Calendar cal = Calendar.getInstance(tz);
         cal.set(Calendar.YEAR, 2001);
         cal.set(Calendar.MONTH, 1); // not daylight savings
@@ -297,7 +297,7 @@ public class FastDatePrinterTest {
         India(INDIA, "+05", "+0530", "+05:30"), Greenwich(GMT, "Z", "Z", "Z"), NewYork(
                 NEW_YORK, "-05", "-0500", "-05:00");
 
-        private Expected1806(TimeZone zone, String one, String two, String three) {
+        Expected1806(TimeZone zone, String one, String two, String three) {
             this.zone = zone;
             this.one = one;
             this.two = two;

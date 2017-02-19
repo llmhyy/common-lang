@@ -151,7 +151,7 @@ public class EventListenerSupport<L> implements Serializable {
      * Create a new EventListenerSupport instance.
      * Serialization-friendly constructor.
      */
-    private EventListenerSupport() {
+    public EventListenerSupport() {
     }
 
     /**
@@ -239,7 +239,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @param objectOutputStream the output stream
      * @throws IOException if an IO error occurs
      */
-    private void writeObject(final ObjectOutputStream objectOutputStream) throws IOException {
+    public void writeObject(final ObjectOutputStream objectOutputStream) throws IOException {
         final ArrayList<L> serializableListeners = new ArrayList<L>();
 
         // don't just rely on instanceof Serializable:
@@ -266,7 +266,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @throws IOException if an IO error occurs
      * @throws ClassNotFoundException if the class cannot be resolved
      */
-    private void readObject(final ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
+    public void readObject(final ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
         @SuppressWarnings("unchecked") // Will throw CCE here if not correct
         final
         L[] srcListeners = (L[]) objectInputStream.readObject();
@@ -285,7 +285,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @param listenerInterface the class of the listener interface
      * @param classLoader the class loader to be used
      */
-    private void initializeTransientFields(final Class<L> listenerInterface, final ClassLoader classLoader) {
+    public void initializeTransientFields(final Class<L> listenerInterface, final ClassLoader classLoader) {
         @SuppressWarnings("unchecked") // Will throw CCE here if not correct
         final
         L[] array = (L[]) Array.newInstance(listenerInterface, 0);
@@ -298,7 +298,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @param listenerInterface the class of the listener interface
      * @param classLoader the class loader to be used
      */
-    private void createProxy(final Class<L> listenerInterface, final ClassLoader classLoader) {
+    public void createProxy(final Class<L> listenerInterface, final ClassLoader classLoader) {
         proxy = listenerInterface.cast(Proxy.newProxyInstance(classLoader,
                 new Class[] { listenerInterface }, createInvocationHandler()));
     }
@@ -308,7 +308,7 @@ public class EventListenerSupport<L> implements Serializable {
      * to the managed listeners.  Subclasses can override to provide custom behavior.
      * @return ProxyInvocationHandler
      */
-    protected InvocationHandler createInvocationHandler() {
+    public InvocationHandler createInvocationHandler() {
         return new ProxyInvocationHandler();
     }
 

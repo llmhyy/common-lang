@@ -174,7 +174,7 @@ public class EqualsBuilderTest {
         assertTrue(!EqualsBuilder.reflectionEquals(new TestTTLeafObject(0, 2, 3, 4), new TestTTLeafObject(1, 2, 3, 4), true));
     }
 
-    private void testReflectionHierarchyEquals(final boolean testTransients) {
+    public void testReflectionHierarchyEquals(final boolean testTransients) {
         final TestObject to1 = new TestObject(4);
         final TestObject to1Bis = new TestObject(4);
         final TestObject to1Ter = new TestObject(4);
@@ -246,7 +246,7 @@ public class EqualsBuilderTest {
      * @param oToChange a TestObject that will be changed
      * @param testTransients whether to test transient instance variables 
      */
-    private void testReflectionEqualsEquivalenceRelationship(
+    public void testReflectionEqualsEquivalenceRelationship(
         final TestObject to,
         final TestObject toBis,
         final TestObject toTer,

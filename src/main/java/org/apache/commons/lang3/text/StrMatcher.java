@@ -212,7 +212,7 @@ public abstract class StrMatcher {
     /**
      * Constructor.
      */
-    protected StrMatcher() {
+    public StrMatcher() {
         super();
     }
 

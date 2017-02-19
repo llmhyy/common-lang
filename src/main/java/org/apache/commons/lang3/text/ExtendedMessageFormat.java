@@ -299,7 +299,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param desc String
      * @return Format
      */
-    private Format getFormat(final String desc) {
+    public Format getFormat(final String desc) {
         if (registry != null) {
             String name = desc;
             String args = null;
@@ -323,7 +323,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param pos current parse position
      * @return argument index
      */
-    private int readArgumentIndex(final String pattern, final ParsePosition pos) {
+    public int readArgumentIndex(final String pattern, final ParsePosition pos) {
         final int start = pos.getIndex();
         seekNonWs(pattern, pos);
         final StringBuilder result = new StringBuilder();
@@ -365,7 +365,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param pos current parse position
      * @return Format description String
      */
-    private String parseFormatDescription(final String pattern, final ParsePosition pos) {
+    public String parseFormatDescription(final String pattern, final ParsePosition pos) {
         final int start = pos.getIndex();
         seekNonWs(pattern, pos);
         final int text = pos.getIndex();
@@ -399,7 +399,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param customPatterns The custom patterns to re-insert, if any
      * @return full pattern
      */
-    private String insertFormats(final String pattern, final ArrayList<String> customPatterns) {
+    public String insertFormats(final String pattern, final ArrayList<String> customPatterns) {
         if (!containsElements(customPatterns)) {
             return pattern;
         }
@@ -442,7 +442,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param pattern String to read
      * @param pos current position
      */
-    private void seekNonWs(final String pattern, final ParsePosition pos) {
+    public void seekNonWs(final String pattern, final ParsePosition pos) {
         int len = 0;
         final char[] buffer = pattern.toCharArray();
         do {
@@ -457,7 +457,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param pos ParsePosition
      * @return <code>pos</code>
      */
-    private ParsePosition next(final ParsePosition pos) {
+    public ParsePosition next(final ParsePosition pos) {
         pos.setIndex(pos.getIndex() + 1);
         return pos;
     }
@@ -471,7 +471,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param appendTo optional StringBuilder to append
      * @return <code>appendTo</code>
      */
-    private StringBuilder appendQuotedString(final String pattern, final ParsePosition pos,
+    public StringBuilder appendQuotedString(final String pattern, final ParsePosition pos,
             final StringBuilder appendTo) {
         assert pattern.toCharArray()[pos.getIndex()] == QUOTE : 
             "Quoted string must start with quote character";
@@ -505,7 +505,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param pattern pattern to parse
      * @param pos current parse position
      */
-    private void getQuotedString(final String pattern, final ParsePosition pos) {
+    public void getQuotedString(final String pattern, final ParsePosition pos) {
         appendQuotedString(pattern, pos, null);
     }
 
@@ -514,7 +514,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param coll to check
      * @return <code>true</code> if some Object was found, <code>false</code> otherwise.
      */
-    private boolean containsElements(final Collection<?> coll) {
+    public boolean containsElements(final Collection<?> coll) {
         if (coll == null || coll.isEmpty()) {
             return false;
         }

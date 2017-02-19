@@ -147,7 +147,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @param locale  non-null locale to use
      * @throws NullPointerException if pattern, timeZone, or locale is null.
      */
-    protected FastDatePrinter(final String pattern, final TimeZone timeZone, final Locale locale) {
+    public FastDatePrinter(final String pattern, final TimeZone timeZone, final Locale locale) {
         mPattern = pattern;
         mTimeZone = timeZone;
         mLocale = locale;
@@ -158,7 +158,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
     /**
      * <p>Initializes the instance for first use.</p>
      */
-    private void init() {
+    public void init() {
         final List<Rule> rulesList = parsePattern();
         mRules = rulesList.toArray(new Rule[rulesList.size()]);
 
@@ -178,7 +178,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @return a {@code List} of Rule objects
      * @throws IllegalArgumentException if pattern is invalid
      */
-    protected List<Rule> parsePattern() {
+    public List<Rule> parsePattern() {
         final DateFormatSymbols symbols = new DateFormatSymbols(mLocale);
         final List<Rule> rules = new ArrayList<Rule>();
 
@@ -320,7 +320,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @param indexRef  index references
      * @return parsed token
      */
-    protected String parseToken(final String pattern, final int[] indexRef) {
+    public String parseToken(final String pattern, final int[] indexRef) {
         final StringBuilder buf = new StringBuilder();
 
         int i = indexRef[0];
@@ -379,7 +379,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @param padding  the padding required
      * @return a new rule with the correct padding
      */
-    protected NumberRule selectNumberRule(final int field, final int padding) {
+    public NumberRule selectNumberRule(final int field, final int padding) {
         switch (padding) {
         case 1:
             return new UnpaddedNumberField(field);
@@ -451,7 +451,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @param c the Calender to apply the rules to.
      * @return a String representation of the given Calendar.
      */
-    private String applyRulesToString(final Calendar c) {
+    public String applyRulesToString(final Calendar c) {
         return applyRules(c, new StringBuilder(mMaxLengthEstimate)).toString();
     }
 
@@ -459,7 +459,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Creation method for new calender instances.
      * @return a new Calendar instance.
      */
-    private Calendar newCalendar() {
+    public Calendar newCalendar() {
         return Calendar.getInstance(mTimeZone, mLocale);
     }
 
@@ -547,7 +547,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @deprecated use {@link #format(Calendar)} or {@link #format(Calendar, Appendable)}
      */
     @Deprecated
-    protected StringBuffer applyRules(final Calendar calendar, final StringBuffer buf) {
+    public StringBuffer applyRules(final Calendar calendar, final StringBuffer buf) {
         return (StringBuffer) applyRules(calendar, (Appendable)buf);
     }
 
@@ -560,7 +560,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @param <B> the Appendable class type, usually StringBuilder or StringBuffer.
      * @return the specified string buffer
      */
-    private <B extends Appendable> B applyRules(final Calendar calendar, final B buf) {
+    public <B extends Appendable> B applyRules(final Calendar calendar, final B buf) {
         try {
             for (final Rule rule : mRules) {
                 rule.appendTo(buf, calendar);
@@ -659,7 +659,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @throws IOException if there is an IO issue.
      * @throws ClassNotFoundException if a class cannot be found.
      */
-    private void readObject(final ObjectInputStream in) throws IOException, ClassNotFoundException {
+    public void readObject(final ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         init();
     }
@@ -670,7 +670,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @param buffer the buffer to append to.
      * @param value the value to append digits from.
      */
-    private static void appendDigits(final Appendable buffer, final int value) throws IOException {
+    public static void appendDigits(final Appendable buffer, final int value) throws IOException {
         buffer.append((char)(value / 10 + '0'));
         buffer.append((char)(value % 10 + '0'));
     }
@@ -683,7 +683,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @param buffer the buffer to append to.
      * @param value the value to append digits from.
      */
-    private static void appendFullDigits(final Appendable buffer, int value, int minFieldWidth) throws IOException {
+    public static void appendFullDigits(final Appendable buffer, int value, int minFieldWidth) throws IOException {
         // specialized paths for 1 to 4 digits -> avoid the memory allocation from the temporary work array
         // see LANG-1248
         if (value < 10000) {

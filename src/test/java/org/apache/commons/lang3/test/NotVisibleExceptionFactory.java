@@ -22,7 +22,7 @@ package org.apache.commons.lang3.test;
  */
 public class NotVisibleExceptionFactory {
 
-  private NotVisibleExceptionFactory() {}
+  public NotVisibleExceptionFactory() {}
 
   /**
    * Create a new Exception whose getCause method returns the
@@ -40,7 +40,7 @@ public class NotVisibleExceptionFactory {
 
     private final Throwable cause;
 
-    private NotVisibleException(Throwable cause) {
+    public NotVisibleException(Throwable cause) {
       this.cause = cause;
     }
 

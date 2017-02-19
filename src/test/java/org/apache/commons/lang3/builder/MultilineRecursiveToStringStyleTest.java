@@ -202,11 +202,11 @@ public class MultilineRecursiveToStringStyleTest {
         assertEquals(exp, toString(wa));
     }
 
-    private String getClassPrefix(Object object) {
+    public String getClassPrefix(Object object) {
         return object.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(object));
     }
 
-    private String toString(Object object) {
+    public String toString(Object object) {
         return new ReflectionToStringBuilder(object, new MultilineRecursiveToStringStyle()).toString();
     }
 

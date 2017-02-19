@@ -65,15 +65,15 @@ public class FastDateParserTest {
         return getInstance(format, TimeZone.getDefault(), Locale.getDefault());
     }
 
-    private DateParser getDateInstance(final int dateStyle, final Locale locale) {
+    public DateParser getDateInstance(final int dateStyle, final Locale locale) {
         return getInstance(FormatCache.getPatternForStyle(Integer.valueOf(dateStyle), null, locale), TimeZone.getDefault(), Locale.getDefault());
     }
 
-    private DateParser getInstance(final String format, final Locale locale) {
+    public DateParser getInstance(final String format, final Locale locale) {
         return getInstance(format, TimeZone.getDefault(), locale);
     }
 
-    private DateParser getInstance(final String format, final TimeZone timeZone) {
+    public DateParser getInstance(final String format, final TimeZone timeZone) {
         return getInstance(format, timeZone, Locale.getDefault());
     }
 
@@ -86,7 +86,7 @@ public class FastDateParserTest {
      *
      * @return the DateParser instance to use for testing
      */
-    protected DateParser getInstance(final String format, final TimeZone timeZone, final Locale locale) {
+    public DateParser getInstance(final String format, final TimeZone timeZone, final Locale locale) {
         return new FastDateParser(format, timeZone, locale, null);
     }
 
@@ -196,7 +196,7 @@ public class FastDateParserTest {
         assertEquals(cal.getTime(), H.parse("2010-08-01 12:33:20"));
     }
 
-    private Calendar getEraStart(int year, final TimeZone zone, final Locale locale) {
+    public Calendar getEraStart(int year, final TimeZone zone, final Locale locale) {
         final Calendar cal = Calendar.getInstance(zone, locale);
         cal.clear();
 
@@ -217,7 +217,7 @@ public class FastDateParserTest {
         return cal;
     }
 
-    private void validateSdfFormatFdpParseEquality(final String format, final Locale locale, final TimeZone tz, final DateParser fdp, final Date in, final int year, final Date cs) throws ParseException {
+    public void validateSdfFormatFdpParseEquality(final String format, final Locale locale, final TimeZone tz, final DateParser fdp, final Date in, final int year, final Date cs) throws ParseException {
         final SimpleDateFormat sdf = new SimpleDateFormat(format, locale);
         sdf.setTimeZone(tz);
         if (format.equals(SHORT_FORMAT)) {
@@ -319,7 +319,7 @@ public class FastDateParserTest {
         testLocales(SHORT_FORMAT_NOERA, true);
     }
 
-    private void testLocales(final String format, final boolean eraBC) throws Exception {
+    public void testLocales(final String format, final boolean eraBC) throws Exception {
 
         final Calendar cal= Calendar.getInstance(GMT);
         cal.clear();
@@ -366,7 +366,7 @@ public class FastDateParserTest {
         }
     }
 
-    private String trimMessage(final String msg) {
+    public String trimMessage(final String msg) {
         if (msg.length() < 100) {
             return msg;
         }
@@ -377,14 +377,14 @@ public class FastDateParserTest {
         return msg.substring(0, 100)+"...";
     }
 
-    private void checkParse(final Locale locale, final Calendar cal, final SimpleDateFormat sdf, final DateParser fdf) throws ParseException {
+    public void checkParse(final Locale locale, final Calendar cal, final SimpleDateFormat sdf, final DateParser fdf) throws ParseException {
         final String formattedDate= sdf.format(cal.getTime());
         checkParse(locale, sdf, fdf, formattedDate);
         checkParse(locale, sdf, fdf, formattedDate.toLowerCase(locale));
         checkParse(locale, sdf, fdf, formattedDate.toUpperCase(locale));
     }
 
-    private void checkParse(final Locale locale, final SimpleDateFormat sdf, final DateParser fdf, final String formattedDate) throws ParseException {
+    public void checkParse(final Locale locale, final SimpleDateFormat sdf, final DateParser fdf, final String formattedDate) throws ParseException {
         final Date expectedTime = sdf.parse(formattedDate);
         final Date actualTime = fdf.parse(formattedDate);
         assertEquals(locale.toString()+" "+formattedDate +"\n",expectedTime, actualTime);
@@ -441,7 +441,7 @@ public class FastDateParserTest {
         testSdfAndFdp("M E","3  Tue", true);
     }
 
-    private void testSdfAndFdp(final String format, final String date, final boolean shouldFail)
+    public void testSdfAndFdp(final String format, final String date, final boolean shouldFail)
             throws Exception {
         Date dfdp = null;
         Date dsdf = null;
@@ -611,7 +611,7 @@ public class FastDateParserTest {
         getInstance("XXXX");
     }
 
-    private static Calendar initializeCalendar(TimeZone tz) {
+    public static Calendar initializeCalendar(TimeZone tz) {
         Calendar cal = Calendar.getInstance(tz);
         cal.set(Calendar.YEAR, 2001);
         cal.set(Calendar.MONTH, 1); // not daylight savings
@@ -628,7 +628,7 @@ public class FastDateParserTest {
         Greenwich(GMT, "Z", "Z", "Z", false), 
         NewYork(NEW_YORK, "-05", "-0500", "-05:00", false);
 
-        private Expected1806(TimeZone zone, String one, String two, String three, boolean hasHalfHourOffset) {
+        Expected1806(TimeZone zone, String one, String two, String three, boolean hasHalfHourOffset) {
             this.zone = zone;
             this.one = one;
             this.two = two;

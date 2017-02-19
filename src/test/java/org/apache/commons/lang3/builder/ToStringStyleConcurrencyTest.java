@@ -81,7 +81,7 @@ public class ToStringStyleConcurrencyTest {
         this.testConcurrency(new CollectionHolder<List<Integer>>(new CopyOnWriteArrayList<Integer>()));
     }
 
-    private void testConcurrency(final CollectionHolder<List<Integer>> holder) throws InterruptedException,
+    public void testConcurrency(final CollectionHolder<List<Integer>> holder) throws InterruptedException,
             ExecutionException {
         final List<Integer> list = holder.collection;
         // make a big array that takes a long time to toString()

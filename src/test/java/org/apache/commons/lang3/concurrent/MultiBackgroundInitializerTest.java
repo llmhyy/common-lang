@@ -55,7 +55,7 @@ public class MultiBackgroundInitializerTest {
      * not be checked)
      * @throws ConcurrentException if an error occurs
      */
-    private void checkChild(final BackgroundInitializer<?> child,
+    public void checkChild(final BackgroundInitializer<?> child,
             final ExecutorService expExec) throws ConcurrentException {
         final ChildBackgroundInitializer cinit = (ChildBackgroundInitializer) child;
         final Integer result = cinit.get();
@@ -108,7 +108,7 @@ public class MultiBackgroundInitializerTest {
      *
      * @throws org.apache.commons.lang3.concurrent.ConcurrentException so we don't have to catch it
      */
-    private MultiBackgroundInitializer.MultiBackgroundInitializerResults checkInitialize()
+    public MultiBackgroundInitializer.MultiBackgroundInitializerResults checkInitialize()
             throws ConcurrentException {
         final int count = 5;
         for (int i = 0; i < count; i++) {
@@ -398,7 +398,7 @@ public class MultiBackgroundInitializerTest {
          * Records this invocation. Optionally throws an exception.
          */
         @Override
-        protected Integer initialize() throws Exception {
+        public Integer initialize() throws Exception {
             currentExecutor = getActiveExecutor();
             initializeCalls++;
 

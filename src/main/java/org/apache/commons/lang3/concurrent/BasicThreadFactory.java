@@ -111,7 +111,7 @@ public class BasicThreadFactory implements ThreadFactory {
      *
      * @param builder the {@code Builder} object
      */
-    private BasicThreadFactory(final Builder builder) {
+    public BasicThreadFactory(final Builder builder) {
         if (builder.wrappedFactory == null) {
             wrappedFactory = Executors.defaultThreadFactory();
         } else {
@@ -215,7 +215,7 @@ public class BasicThreadFactory implements ThreadFactory {
      *
      * @param t the thread to be initialized
      */
-    private void initializeThread(final Thread t) {
+    public void initializeThread(final Thread t) {
 
         if (getNamingPattern() != null) {
             final Long count = Long.valueOf(threadCounter.incrementAndGet());

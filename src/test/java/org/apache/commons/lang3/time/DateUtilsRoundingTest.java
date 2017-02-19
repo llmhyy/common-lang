@@ -610,7 +610,7 @@ public class DateUtilsRoundingTest {
      * @param calendarField a Calendar.field value
      * @since 3.0
      */
-    protected void baseRoundTest(final Date roundedUpDate, final Date roundedDownDate, final Date lastRoundDownDate, final int calendarField) {
+    public void baseRoundTest(final Date roundedUpDate, final Date roundedDownDate, final Date lastRoundDownDate, final int calendarField) {
         final Date firstRoundUpDate = DateUtils.addMilliseconds(lastRoundDownDate, 1);
         
         //Date-comparison
@@ -658,7 +658,7 @@ public class DateUtilsRoundingTest {
      * @param calendarField a Calendar.field value
      * @since 3.0
      */
-    protected void baseTruncateTest(final Date truncatedDate, final Date lastTruncateDate, final int calendarField) {
+    public void baseTruncateTest(final Date truncatedDate, final Date lastTruncateDate, final int calendarField) {
         final Date nextTruncateDate = DateUtils.addMilliseconds(lastTruncateDate, 1);
         
         //Date-comparison
@@ -699,7 +699,7 @@ public class DateUtilsRoundingTest {
      * @param calendarField a Calendar.field value
      * @since 3.0
      */
-    protected void roundToJanuaryFirst(final Date minDate, final Date maxDate, final int calendarField) {
+    public void roundToJanuaryFirst(final Date minDate, final Date maxDate, final int calendarField) {
         assertEquals("Rounding "+ fdf.format(januaryOneDate) +" as Date with CalendarField-value "+ calendarField +" must return itself", januaryOneDate, DateUtils.round(januaryOneDate, calendarField));
         assertEquals(januaryOneDate, DateUtils.round(minDate, calendarField));
         assertEquals(januaryOneDate, DateUtils.round(maxDate, calendarField));

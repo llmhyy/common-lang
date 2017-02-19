@@ -77,7 +77,7 @@ public class ExceptionUtilsTest {
     }
 
     //-----------------------------------------------------------------------
-    private Throwable createExceptionWithoutCause() {
+    public Throwable createExceptionWithoutCause() {
         try {
             throw new ExceptionWithoutCause();
         } catch (final Throwable t) {
@@ -85,7 +85,7 @@ public class ExceptionUtilsTest {
         }
     }
 
-    private Throwable createExceptionWithCause() {
+    public Throwable createExceptionWithCause() {
         try {
             try {
                 throw new ExceptionWithCause(createExceptionWithoutCause());
@@ -564,11 +564,11 @@ public class ExceptionUtilsTest {
         }
     }
 
-    private static int redeclareCheckedException() throws IOException {
+    public static int redeclareCheckedException() throws IOException {
         return throwsCheckedException();
     }
 
-    private static int throwsCheckedException() {
+    public static int throwsCheckedException() {
         try {
             throw new IOException();
         } catch (Exception e) {

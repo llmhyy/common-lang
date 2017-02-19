@@ -260,7 +260,7 @@ public class ConstructorUtilsTest {
                 singletonArray(null), singletonArray(Object.class));
     }
 
-    private void expectMatchingAccessibleConstructorParameterTypes(final Class<?> cls,
+    public void expectMatchingAccessibleConstructorParameterTypes(final Class<?> cls,
             final Class<?>[] requestTypes, final Class<?>[] actualTypes) {
         final Constructor<?> c = ConstructorUtils.getMatchingAccessibleConstructor(cls,
                 requestTypes);
@@ -269,11 +269,11 @@ public class ConstructorUtilsTest {
                 .getParameterTypes()));
     }
 
-    private String toString(final Class<?>[] c) {
+    public String toString(final Class<?>[] c) {
         return Arrays.asList(c).toString();
     }
 
-    private Class<?>[] singletonArray(final Class<?> c) {
+    public Class<?>[] singletonArray(final Class<?> c) {
         Class<?>[] result = classCache.get(c);
         if (result == null) {
             result = new Class[] { c };

@@ -68,7 +68,7 @@ public class SystemDefaultsSwitch implements TestRule {
         return applyTimeZone(defaults, applyLocale(defaults, stmt));
     }
 
-    private Statement applyTimeZone(SystemDefaults defaults, final Statement stmt) {
+    public Statement applyTimeZone(SystemDefaults defaults, final Statement stmt) {
         if (defaults.timezone().isEmpty()) {
             return stmt;
         }
@@ -89,7 +89,7 @@ public class SystemDefaultsSwitch implements TestRule {
         };
     }
 
-    private Statement applyLocale(SystemDefaults defaults, final Statement stmt) {
+    public Statement applyLocale(SystemDefaults defaults, final Statement stmt) {
         if (defaults.locale().isEmpty()) {
             return stmt;
         }

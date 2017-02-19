@@ -134,7 +134,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
      * 
      * @return a clone of <code>CSV_TOKENIZER_PROTOTYPE</code>.
      */
-    private static StrTokenizer getCSVClone() {
+    public static StrTokenizer getCSVClone() {
         return (StrTokenizer) CSV_TOKENIZER_PROTOTYPE.clone();
     }
 
@@ -186,7 +186,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
      * 
      * @return a clone of <code>TSV_TOKENIZER_PROTOTYPE</code>.
      */
-    private static StrTokenizer getTSVClone() {
+    public static StrTokenizer getTSVClone() {
         return (StrTokenizer) TSV_TOKENIZER_PROTOTYPE.clone();
     }
 
@@ -598,7 +598,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
     /**
      * Checks if tokenization has been done, and if not then do it.
      */
-    private void checkTokenized() {
+    public void checkTokenized() {
         if (tokens == null) {
             if (chars == null) {
                 // still call tokenize as subclass may do some work
@@ -631,7 +631,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
      * @param count  the number of characters to tokenize, must be valid
      * @return the modifiable list of String tokens, unmodifiable if null array or zero count
      */
-    protected List<String> tokenize(final char[] srcChars, final int offset, final int count) {
+    public List<String> tokenize(final char[] srcChars, final int offset, final int count) {
         if (srcChars == null || count == 0) {
             return Collections.emptyList();
         }
@@ -658,7 +658,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
      * @param list  the list to add to
      * @param tok  the token to add
      */
-    private void addToken(final List<String> list, String tok) {
+    public void addToken(final List<String> list, String tok) {
         if (StringUtils.isEmpty(tok)) {
             if (isIgnoreEmptyTokens()) {
                 return;
@@ -681,7 +681,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
      * @return the starting position of the next field (the character
      *  immediately after the delimiter), or -1 if end of string found
      */
-    private int readNextToken(final char[] srcChars, int start, final int len, final StrBuilder workArea, final List<String> tokenList) {
+    public int readNextToken(final char[] srcChars, int start, final int len, final StrBuilder workArea, final List<String> tokenList) {
         // skip all leading whitespace, unless it is the
         // field delimiter or the quote character
         while (start < len) {
@@ -731,7 +731,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
      *  immediately after the delimiter, or if end of string found,
      *  then the length of string
      */
-    private int readWithQuotes(final char[] srcChars, final int start, final int len, final StrBuilder workArea, 
+    public int readWithQuotes(final char[] srcChars, final int start, final int len, final StrBuilder workArea, 
                                final List<String> tokenList, final int quoteStart, final int quoteLen) {
         // Loop until we've found the end of the quoted
         // string or the end of the input
@@ -827,7 +827,7 @@ public class StrTokenizer implements ListIterator<String>, Cloneable {
      * @param quoteLen  the length of the matched quote, 0 if no quoting
      * @return true if a quote is matched
      */
-    private boolean isQuote(final char[] srcChars, final int pos, final int len, final int quoteStart, final int quoteLen) {
+    public boolean isQuote(final char[] srcChars, final int pos, final int len, final int quoteStart, final int quoteLen) {
         for (int i = 0; i < quoteLen; i++) {
             if (pos + i >= len || srcChars[pos + i] != srcChars[quoteStart + i]) {
                 return false;

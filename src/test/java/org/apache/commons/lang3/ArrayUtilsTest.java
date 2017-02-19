@@ -88,7 +88,7 @@ public class ArrayUtilsTest  {
     }
 
     //-----------------------------------------------------------------------
-    private void assertIsEquals(final Object array1, final Object array2, final Object array3) {
+    public void assertIsEquals(final Object array1, final Object array2, final Object array3) {
         assertTrue(ArrayUtils.isEquals(array1, array1));
         assertTrue(ArrayUtils.isEquals(array2, array2));
         assertTrue(ArrayUtils.isEquals(array3, array3));
@@ -218,7 +218,7 @@ public class ArrayUtilsTest  {
         assertEquals(0, array.length);
     }
 
-    private static <T> T[] toArrayPropagatingType(final T... items)
+    public static <T> T[] toArrayPropagatingType(final T... items)
     {
         return ArrayUtils.toArray(items);
     }
